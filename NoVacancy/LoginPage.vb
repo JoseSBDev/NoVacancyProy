@@ -31,6 +31,20 @@ Public Class LoginPage
 
                     MessageBox.Show("Inicio de sesión exitoso" & role)
                     loggedIn = True
+
+                    Select Case role
+                        Case "1"
+                            role = "Administrador"
+                        Case "2"
+                            role = "Gerencia"
+                        Case "3"
+                            role = "Recepcion"
+                        Case "4"
+                            role = "Limpieza"
+                        Case "5"
+                            role = "Mantenimiento"
+                    End Select
+
                     Me.Close()
                 Else
                     MessageBox.Show("Nombre de usuario o contraseña incorrectos")

@@ -8,10 +8,16 @@ Public Class RoomsPage
     Dim user = "root"
     Dim pwd = "root"
     Dim database = "hotel"
-    Dim cadenaConexion = "server=" & server & ";user=" & user & ";password=" & pwd & ";database=" & database
-    Dim cn As New MySqlConnection(cadenaConexion)
+    Dim connectionString = "server=" & server & ";user=" & user & ";password=" & pwd & ";database=" & database
+    Dim cn As New MySqlConnection(connectionString)
+    Dim role
 
     Private Sub RoomsPage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        'role = MainPage.role
+        'If role! = "Administrador" Or role!= "Gerencia" Or role! = "Recepcion" Then
+        '    Btn_UpdateRooms.Enabled = False
+        'End If
         Try
             ' Llena el ComboBox de tipos de habitación
             FillComboBoxRoomType()
