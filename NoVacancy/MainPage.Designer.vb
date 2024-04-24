@@ -22,12 +22,22 @@ Partial Class MainPage
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainPage))
         Me.Btn_Reservations = New System.Windows.Forms.Button()
         Me.Btn_Rooms = New System.Windows.Forms.Button()
         Me.Btn_Inventory = New System.Windows.Forms.Button()
         Me.Btn_Config = New System.Windows.Forms.Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Btn_exit = New System.Windows.Forms.Button()
+        Me.LblWelcome = New System.Windows.Forms.Label()
+        Me.Btn_Maintenance = New System.Windows.Forms.Button()
+        Me.Btn_Cleaning = New System.Windows.Forms.Button()
+        Me.Btn_Incident = New System.Windows.Forms.Button()
+        Me.WebBrowser1 = New System.Windows.Forms.WebBrowser()
+        Me.PB_ChangeUser = New System.Windows.Forms.PictureBox()
+        Me.PB_Weather = New System.Windows.Forms.PictureBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        CType(Me.PB_ChangeUser, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PB_Weather, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -90,17 +100,6 @@ Partial Class MainPage
         Me.Btn_Config.Text = "Configuración"
         Me.Btn_Config.UseVisualStyleBackColor = False
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.PictureBox1.Image = Global.NoVacancy.My.Resources.Resources.Black_Gold_Simple_Modern_Villa___Homestay_Logo
-        Me.PictureBox1.Location = New System.Drawing.Point(319, 80)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(500, 500)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
-        Me.PictureBox1.TabIndex = 8
-        Me.PictureBox1.TabStop = False
-        '
         'Btn_exit
         '
         Me.Btn_exit.AccessibleRole = System.Windows.Forms.AccessibleRole.None
@@ -117,12 +116,116 @@ Partial Class MainPage
         Me.Btn_exit.Text = "Salir"
         Me.Btn_exit.UseVisualStyleBackColor = False
         '
+        'LblWelcome
+        '
+        Me.LblWelcome.AutoSize = True
+        Me.LblWelcome.Font = New System.Drawing.Font("MS Reference Sans Serif", 28.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblWelcome.Location = New System.Drawing.Point(113, 12)
+        Me.LblWelcome.Name = "LblWelcome"
+        Me.LblWelcome.Size = New System.Drawing.Size(317, 60)
+        Me.LblWelcome.TabIndex = 10
+        Me.LblWelcome.Text = "Bienvenido "
+        '
+        'Btn_Maintenance
+        '
+        Me.Btn_Maintenance.AccessibleRole = System.Windows.Forms.AccessibleRole.None
+        Me.Btn_Maintenance.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Btn_Maintenance.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.Btn_Maintenance.Font = New System.Drawing.Font("MS Reference Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Btn_Maintenance.ForeColor = System.Drawing.SystemColors.WindowFrame
+        Me.Btn_Maintenance.ImageAlign = System.Drawing.ContentAlignment.BottomRight
+        Me.Btn_Maintenance.Location = New System.Drawing.Point(844, 12)
+        Me.Btn_Maintenance.Name = "Btn_Maintenance"
+        Me.Btn_Maintenance.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Btn_Maintenance.Size = New System.Drawing.Size(237, 65)
+        Me.Btn_Maintenance.TabIndex = 12
+        Me.Btn_Maintenance.Text = "Mantenimiento"
+        Me.Btn_Maintenance.UseVisualStyleBackColor = False
+        '
+        'Btn_Cleaning
+        '
+        Me.Btn_Cleaning.AccessibleRole = System.Windows.Forms.AccessibleRole.None
+        Me.Btn_Cleaning.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Btn_Cleaning.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.Btn_Cleaning.Font = New System.Drawing.Font("MS Reference Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Btn_Cleaning.ForeColor = System.Drawing.SystemColors.WindowFrame
+        Me.Btn_Cleaning.ImageAlign = System.Drawing.ContentAlignment.BottomRight
+        Me.Btn_Cleaning.Location = New System.Drawing.Point(844, 117)
+        Me.Btn_Cleaning.Name = "Btn_Cleaning"
+        Me.Btn_Cleaning.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Btn_Cleaning.Size = New System.Drawing.Size(237, 65)
+        Me.Btn_Cleaning.TabIndex = 13
+        Me.Btn_Cleaning.Text = "Limpieza"
+        Me.Btn_Cleaning.UseVisualStyleBackColor = False
+        '
+        'Btn_Incident
+        '
+        Me.Btn_Incident.AccessibleRole = System.Windows.Forms.AccessibleRole.None
+        Me.Btn_Incident.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Btn_Incident.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.Btn_Incident.Font = New System.Drawing.Font("MS Reference Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Btn_Incident.ForeColor = System.Drawing.SystemColors.WindowFrame
+        Me.Btn_Incident.ImageAlign = System.Drawing.ContentAlignment.BottomRight
+        Me.Btn_Incident.Location = New System.Drawing.Point(844, 367)
+        Me.Btn_Incident.Name = "Btn_Incident"
+        Me.Btn_Incident.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Btn_Incident.Size = New System.Drawing.Size(237, 65)
+        Me.Btn_Incident.TabIndex = 15
+        Me.Btn_Incident.Text = "Crear incidencia"
+        Me.Btn_Incident.UseVisualStyleBackColor = False
+        '
+        'WebBrowser1
+        '
+        Me.WebBrowser1.Location = New System.Drawing.Point(116, 117)
+        Me.WebBrowser1.MinimumSize = New System.Drawing.Size(20, 20)
+        Me.WebBrowser1.Name = "WebBrowser1"
+        Me.WebBrowser1.Size = New System.Drawing.Size(546, 463)
+        Me.WebBrowser1.TabIndex = 17
+        '
+        'PB_ChangeUser
+        '
+        Me.PB_ChangeUser.Image = CType(resources.GetObject("PB_ChangeUser.Image"), System.Drawing.Image)
+        Me.PB_ChangeUser.InitialImage = CType(resources.GetObject("PB_ChangeUser.InitialImage"), System.Drawing.Image)
+        Me.PB_ChangeUser.Location = New System.Drawing.Point(34, 12)
+        Me.PB_ChangeUser.Name = "PB_ChangeUser"
+        Me.PB_ChangeUser.Size = New System.Drawing.Size(76, 76)
+        Me.PB_ChangeUser.TabIndex = 16
+        Me.PB_ChangeUser.TabStop = False
+        '
+        'PB_Weather
+        '
+        Me.PB_Weather.Image = CType(resources.GetObject("PB_Weather.Image"), System.Drawing.Image)
+        Me.PB_Weather.InitialImage = CType(resources.GetObject("PB_Weather.InitialImage"), System.Drawing.Image)
+        Me.PB_Weather.Location = New System.Drawing.Point(34, 117)
+        Me.PB_Weather.Name = "PB_Weather"
+        Me.PB_Weather.Size = New System.Drawing.Size(76, 76)
+        Me.PB_Weather.TabIndex = 14
+        Me.PB_Weather.TabStop = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.PictureBox1.Image = Global.NoVacancy.My.Resources.Resources.Black_Gold_Simple_Modern_Villa___Homestay_Logo
+        Me.PictureBox1.Location = New System.Drawing.Point(319, 80)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(500, 500)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.PictureBox1.TabIndex = 8
+        Me.PictureBox1.TabStop = False
+        '
         'MainPage
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.BackColor = System.Drawing.SystemColors.Window
         Me.ClientSize = New System.Drawing.Size(1093, 652)
+        Me.Controls.Add(Me.WebBrowser1)
+        Me.Controls.Add(Me.PB_ChangeUser)
+        Me.Controls.Add(Me.Btn_Incident)
+        Me.Controls.Add(Me.PB_Weather)
+        Me.Controls.Add(Me.Btn_Cleaning)
+        Me.Controls.Add(Me.Btn_Maintenance)
+        Me.Controls.Add(Me.LblWelcome)
         Me.Controls.Add(Me.Btn_exit)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Btn_Config)
@@ -135,8 +238,11 @@ Partial Class MainPage
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Form1"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
+        CType(Me.PB_ChangeUser, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PB_Weather, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -146,4 +252,11 @@ Partial Class MainPage
     Friend WithEvents Btn_Config As Button
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Btn_exit As Button
+    Friend WithEvents LblWelcome As Label
+    Friend WithEvents Btn_Maintenance As Button
+    Friend WithEvents Btn_Cleaning As Button
+    Friend WithEvents PB_Weather As PictureBox
+    Friend WithEvents Btn_Incident As Button
+    Friend WithEvents PB_ChangeUser As PictureBox
+    Friend WithEvents WebBrowser1 As WebBrowser
 End Class
