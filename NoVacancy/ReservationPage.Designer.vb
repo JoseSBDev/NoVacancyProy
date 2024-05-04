@@ -124,9 +124,12 @@ Partial Class ReservationPage
         Me.ClientSize = New System.Drawing.Size(1129, 587)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.DataGridView1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "ReservationPage"
-        Me.Text = "ReservationPage"
+        Me.Text = "Reservas"
         Me.TopMost = True
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)

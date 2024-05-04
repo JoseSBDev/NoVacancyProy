@@ -119,6 +119,7 @@ Partial Class InventoryPage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.Window
         Me.ClientSize = New System.Drawing.Size(1164, 554)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.TxtBox_Stock)
@@ -128,8 +129,11 @@ Partial Class InventoryPage
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ListBox_Alerts)
         Me.Controls.Add(Me.DataGridView1)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "InventoryPage"
-        Me.Text = "InventoryPage"
+        Me.Text = "Inventario"
+        Me.TopMost = True
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

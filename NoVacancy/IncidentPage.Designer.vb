@@ -34,20 +34,20 @@ Partial Class IncidentPage
         '
         'RTB_Description
         '
-        Me.RTB_Description.Location = New System.Drawing.Point(21, 168)
-        Me.RTB_Description.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.RTB_Description.Location = New System.Drawing.Point(28, 207)
+        Me.RTB_Description.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.RTB_Description.Name = "RTB_Description"
-        Me.RTB_Description.Size = New System.Drawing.Size(364, 119)
+        Me.RTB_Description.Size = New System.Drawing.Size(484, 146)
         Me.RTB_Description.TabIndex = 0
         Me.RTB_Description.Text = ""
         '
         'CB_Type
         '
         Me.CB_Type.FormattingEnabled = True
-        Me.CB_Type.Location = New System.Drawing.Point(191, 24)
-        Me.CB_Type.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.CB_Type.Location = New System.Drawing.Point(255, 30)
+        Me.CB_Type.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.CB_Type.Name = "CB_Type"
-        Me.CB_Type.Size = New System.Drawing.Size(92, 21)
+        Me.CB_Type.Size = New System.Drawing.Size(121, 24)
         Me.CB_Type.TabIndex = 1
         '
         'Label1
@@ -55,8 +55,7 @@ Partial Class IncidentPage
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.MenuText
-        Me.Label1.Location = New System.Drawing.Point(11, 24)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label1.Location = New System.Drawing.Point(15, 30)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(188, 25)
         Me.Label1.TabIndex = 2
@@ -66,10 +65,9 @@ Partial Class IncidentPage
         '
         Me.Label2.AutoSize = True
         Me.Label2.ForeColor = System.Drawing.SystemColors.MenuText
-        Me.Label2.Location = New System.Drawing.Point(21, 143)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label2.Location = New System.Drawing.Point(28, 176)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(0, 15)
+        Me.Label2.Size = New System.Drawing.Size(0, 17)
         Me.Label2.TabIndex = 3
         '
         'Label3
@@ -77,8 +75,7 @@ Partial Class IncidentPage
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.SystemColors.MenuText
-        Me.Label3.Location = New System.Drawing.Point(21, 136)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label3.Location = New System.Drawing.Point(28, 167)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(157, 25)
         Me.Label3.TabIndex = 4
@@ -89,8 +86,7 @@ Partial Class IncidentPage
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.SystemColors.MenuText
-        Me.Label4.Location = New System.Drawing.Point(11, 72)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label4.Location = New System.Drawing.Point(15, 89)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(170, 25)
         Me.Label4.TabIndex = 5
@@ -99,10 +95,10 @@ Partial Class IncidentPage
         'CB_Room
         '
         Me.CB_Room.FormattingEnabled = True
-        Me.CB_Room.Location = New System.Drawing.Point(191, 78)
-        Me.CB_Room.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.CB_Room.Location = New System.Drawing.Point(255, 96)
+        Me.CB_Room.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.CB_Room.Name = "CB_Room"
-        Me.CB_Room.Size = New System.Drawing.Size(92, 21)
+        Me.CB_Room.Size = New System.Drawing.Size(121, 24)
         Me.CB_Room.TabIndex = 6
         '
         'Btn_CreateIncident
@@ -113,20 +109,21 @@ Partial Class IncidentPage
         Me.Btn_CreateIncident.Font = New System.Drawing.Font("MS Reference Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Btn_CreateIncident.ForeColor = System.Drawing.SystemColors.WindowFrame
         Me.Btn_CreateIncident.ImageAlign = System.Drawing.ContentAlignment.BottomRight
-        Me.Btn_CreateIncident.Location = New System.Drawing.Point(107, 325)
-        Me.Btn_CreateIncident.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Btn_CreateIncident.Location = New System.Drawing.Point(143, 400)
+        Me.Btn_CreateIncident.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Btn_CreateIncident.Name = "Btn_CreateIncident"
         Me.Btn_CreateIncident.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Btn_CreateIncident.Size = New System.Drawing.Size(178, 84)
+        Me.Btn_CreateIncident.Size = New System.Drawing.Size(237, 103)
         Me.Btn_CreateIncident.TabIndex = 16
         Me.Btn_CreateIncident.Text = "Crear incidencia"
         Me.Btn_CreateIncident.UseVisualStyleBackColor = False
         '
         'IncidentPage
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(406, 448)
+        Me.BackColor = System.Drawing.SystemColors.Window
+        Me.ClientSize = New System.Drawing.Size(541, 551)
         Me.Controls.Add(Me.Btn_CreateIncident)
         Me.Controls.Add(Me.CB_Room)
         Me.Controls.Add(Me.Label4)
@@ -136,9 +133,13 @@ Partial Class IncidentPage
         Me.Controls.Add(Me.CB_Type)
         Me.Controls.Add(Me.RTB_Description)
         Me.ForeColor = System.Drawing.SystemColors.Window
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
+        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "IncidentPage"
-        Me.Text = "IncidentPAge"
+        Me.Text = "Crear incidencia"
+        Me.TopMost = True
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

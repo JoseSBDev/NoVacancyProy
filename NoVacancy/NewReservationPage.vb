@@ -19,6 +19,7 @@ Public Class NewReservationPage
     Dim clientName As String
     Dim clientPhone As String
 
+#Region "onLoad region"
     Private Sub NewReservationPage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim clientEmail = Nothing
         Dim clientName = Nothing
@@ -50,7 +51,19 @@ Public Class NewReservationPage
         Lbl_Price.Text = reservationPrice
         CheckIfAble()
     End Sub
+#End Region
 
+#Region "Button events region"
+    Private Sub Btn_CreateClient_Click(sender As Object, e As EventArgs) Handles Btn_CreateClient.Click
+        CreateClient()
+    End Sub
+
+    Private Sub Btn_AcceptReservation_Click(sender As Object, e As EventArgs) Handles Btn_AcceptReservation.Click
+        CreateReservation()
+    End Sub
+#End Region
+
+#Region "Other controls events region"
     Private Sub ChkBox_NewClient_CheckedChanged(sender As Object, e As EventArgs) Handles ChkBox_NewClient.CheckedChanged
         If ChkBox_NewClient.Checked Then
             For Each control As Control In Panel1.Controls
@@ -61,6 +74,8 @@ Public Class NewReservationPage
                 ableToReserve = False
             Next
             TxtBox_SearchClient.Enabled = False
+            Btn_CheckClient.Enabled = False
+            Btn_CreateClient.Enabled = True
         Else
             For Each control As Control In Panel1.Controls
                 If TypeOf control Is TextBox Then
@@ -70,6 +85,8 @@ Public Class NewReservationPage
                 ableToReserve = False
             Next
             TxtBox_SearchClient.Enabled = True
+            Btn_CheckClient.Enabled = True
+            Btn_CreateClient.Enabled = False
         End If
         CheckIfAble()
     End Sub
@@ -110,14 +127,14 @@ Public Class NewReservationPage
         End If
     End Sub
 
-    Private Sub Btn_CreateClient_Click(sender As Object, e As EventArgs) Handles Btn_CreateClient.Click
-        CreateClient()
-    End Sub
+    Private Sub TxtBox_Mail_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtBox_Mail.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
 
-    Private Sub Btn_AcceptReservation_Click(sender As Object, e As EventArgs) Handles Btn_AcceptReservation.Click
-        CreateReservation()
+        End If
     End Sub
+#End Region
 
+#Region "Main subs and functions region"
     Private Sub SearchByEmail()
         clientEmail = TxtBox_SearchClient.Text.Trim() 'Se eliminan espacios con trim
         'Se configura la query con los datos introducidos
@@ -184,11 +201,7 @@ Public Class NewReservationPage
         Return clientId
     End Function
 
-    Private Sub TxtBox_Mail_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtBox_Mail.KeyPress
-        If e.KeyChar = ChrW(Keys.Enter) Then
 
-        End If
-    End Sub
 
     Public Sub CreateClient()
         'Uso expresiones regulares para controlar el formato de los datos introducidos
@@ -265,5 +278,6 @@ Public Class NewReservationPage
             MsgBox("Rellene los datos necesarios para la reserva y vuelva a intentarlo.")
         End If
     End Sub
+#End Region
 
 End Class

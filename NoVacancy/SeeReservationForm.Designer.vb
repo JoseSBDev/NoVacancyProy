@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class EditReservationForm
+Partial Class SeeReservationForm
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -40,7 +40,11 @@ Partial Class EditReservationForm
         Me.Btn_Minus = New System.Windows.Forms.Button()
         Me.ListBox_ReservationProds = New System.Windows.Forms.ListBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Btn_EndReservation = New System.Windows.Forms.Button()
+        Me.Btn_AddProducts = New System.Windows.Forms.Button()
+        Me.TxtBox_TotalAmount = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Btn_DeleteProduct = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -58,7 +62,7 @@ Partial Class EditReservationForm
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(228, 258)
+        Me.Label4.Location = New System.Drawing.Point(228, 244)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(88, 17)
@@ -67,7 +71,7 @@ Partial Class EditReservationForm
         '
         'TxtBox_Enddate
         '
-        Me.TxtBox_Enddate.Location = New System.Drawing.Point(228, 284)
+        Me.TxtBox_Enddate.Location = New System.Drawing.Point(228, 270)
         Me.TxtBox_Enddate.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtBox_Enddate.Name = "TxtBox_Enddate"
         Me.TxtBox_Enddate.Size = New System.Drawing.Size(132, 22)
@@ -76,7 +80,7 @@ Partial Class EditReservationForm
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(228, 174)
+        Me.Label3.Location = New System.Drawing.Point(228, 132)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(36, 17)
@@ -86,7 +90,7 @@ Partial Class EditReservationForm
         'TxtBox_Type
         '
         Me.TxtBox_Type.Enabled = False
-        Me.TxtBox_Type.Location = New System.Drawing.Point(228, 199)
+        Me.TxtBox_Type.Location = New System.Drawing.Point(228, 157)
         Me.TxtBox_Type.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtBox_Type.Name = "TxtBox_Type"
         Me.TxtBox_Type.Size = New System.Drawing.Size(132, 22)
@@ -95,7 +99,7 @@ Partial Class EditReservationForm
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(16, 258)
+        Me.Label2.Location = New System.Drawing.Point(16, 244)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(100, 17)
@@ -104,7 +108,7 @@ Partial Class EditReservationForm
         '
         'TxtBox_Startdate
         '
-        Me.TxtBox_Startdate.Location = New System.Drawing.Point(16, 284)
+        Me.TxtBox_Startdate.Location = New System.Drawing.Point(16, 270)
         Me.TxtBox_Startdate.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtBox_Startdate.Name = "TxtBox_Startdate"
         Me.TxtBox_Startdate.Size = New System.Drawing.Size(132, 22)
@@ -113,7 +117,7 @@ Partial Class EditReservationForm
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(16, 174)
+        Me.Label1.Location = New System.Drawing.Point(16, 132)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(75, 17)
@@ -123,7 +127,7 @@ Partial Class EditReservationForm
         'TxtBox_Room
         '
         Me.TxtBox_Room.Enabled = False
-        Me.TxtBox_Room.Location = New System.Drawing.Point(16, 199)
+        Me.TxtBox_Room.Location = New System.Drawing.Point(16, 157)
         Me.TxtBox_Room.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtBox_Room.Name = "TxtBox_Room"
         Me.TxtBox_Room.Size = New System.Drawing.Size(132, 22)
@@ -164,7 +168,7 @@ Partial Class EditReservationForm
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(452, 174)
+        Me.Label5.Location = New System.Drawing.Point(452, 132)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(72, 17)
         Me.Label5.TabIndex = 18
@@ -173,14 +177,14 @@ Partial Class EditReservationForm
         'CB_Products
         '
         Me.CB_Products.FormattingEnabled = True
-        Me.CB_Products.Location = New System.Drawing.Point(455, 195)
+        Me.CB_Products.Location = New System.Drawing.Point(455, 153)
         Me.CB_Products.Name = "CB_Products"
         Me.CB_Products.Size = New System.Drawing.Size(329, 24)
         Me.CB_Products.TabIndex = 19
         '
         'TxtBox_Quantity
         '
-        Me.TxtBox_Quantity.Location = New System.Drawing.Point(597, 284)
+        Me.TxtBox_Quantity.Location = New System.Drawing.Point(597, 208)
         Me.TxtBox_Quantity.Name = "TxtBox_Quantity"
         Me.TxtBox_Quantity.Size = New System.Drawing.Size(44, 22)
         Me.TxtBox_Quantity.TabIndex = 20
@@ -194,7 +198,7 @@ Partial Class EditReservationForm
         Me.Btn_Plus.Font = New System.Drawing.Font("MS Reference Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Btn_Plus.ForeColor = System.Drawing.SystemColors.WindowFrame
         Me.Btn_Plus.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.Btn_Plus.Location = New System.Drawing.Point(648, 275)
+        Me.Btn_Plus.Location = New System.Drawing.Point(648, 199)
         Me.Btn_Plus.Margin = New System.Windows.Forms.Padding(4)
         Me.Btn_Plus.Name = "Btn_Plus"
         Me.Btn_Plus.Size = New System.Drawing.Size(39, 34)
@@ -211,7 +215,7 @@ Partial Class EditReservationForm
         Me.Btn_Minus.Font = New System.Drawing.Font("MS Reference Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Btn_Minus.ForeColor = System.Drawing.SystemColors.WindowFrame
         Me.Btn_Minus.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.Btn_Minus.Location = New System.Drawing.Point(551, 275)
+        Me.Btn_Minus.Location = New System.Drawing.Point(551, 199)
         Me.Btn_Minus.Margin = New System.Windows.Forms.Padding(4)
         Me.Btn_Minus.Name = "Btn_Minus"
         Me.Btn_Minus.Size = New System.Drawing.Size(39, 34)
@@ -223,7 +227,7 @@ Partial Class EditReservationForm
         '
         Me.ListBox_ReservationProds.FormattingEnabled = True
         Me.ListBox_ReservationProds.ItemHeight = 16
-        Me.ListBox_ReservationProds.Location = New System.Drawing.Point(455, 340)
+        Me.ListBox_ReservationProds.Location = New System.Drawing.Point(455, 264)
         Me.ListBox_ReservationProds.Name = "ListBox_ReservationProds"
         Me.ListBox_ReservationProds.Size = New System.Drawing.Size(329, 100)
         Me.ListBox_ReservationProds.TabIndex = 23
@@ -231,34 +235,91 @@ Partial Class EditReservationForm
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(452, 320)
+        Me.Label6.Location = New System.Drawing.Point(452, 244)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(159, 17)
         Me.Label6.TabIndex = 24
         Me.Label6.Text = "Productos de la reserva"
         '
-        'Button3
+        'Btn_EndReservation
         '
-        Me.Button3.AccessibleRole = System.Windows.Forms.AccessibleRole.None
-        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Button3.BackColor = System.Drawing.SystemColors.Info
-        Me.Button3.Font = New System.Drawing.Font("MS Reference Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.ForeColor = System.Drawing.SystemColors.WindowFrame
-        Me.Button3.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.Button3.Location = New System.Drawing.Point(13, 360)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(263, 80)
-        Me.Button3.TabIndex = 25
-        Me.Button3.Text = "Finalizar reserva"
-        Me.Button3.UseVisualStyleBackColor = False
+        Me.Btn_EndReservation.AccessibleRole = System.Windows.Forms.AccessibleRole.None
+        Me.Btn_EndReservation.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Btn_EndReservation.BackColor = System.Drawing.SystemColors.Info
+        Me.Btn_EndReservation.Font = New System.Drawing.Font("MS Reference Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Btn_EndReservation.ForeColor = System.Drawing.SystemColors.WindowFrame
+        Me.Btn_EndReservation.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
+        Me.Btn_EndReservation.Location = New System.Drawing.Point(19, 371)
+        Me.Btn_EndReservation.Margin = New System.Windows.Forms.Padding(4)
+        Me.Btn_EndReservation.Name = "Btn_EndReservation"
+        Me.Btn_EndReservation.Size = New System.Drawing.Size(263, 80)
+        Me.Btn_EndReservation.TabIndex = 25
+        Me.Btn_EndReservation.Text = "Finalizar reserva"
+        Me.Btn_EndReservation.UseVisualStyleBackColor = False
         '
-        'EditReservationForm
+        'Btn_AddProducts
+        '
+        Me.Btn_AddProducts.AccessibleRole = System.Windows.Forms.AccessibleRole.None
+        Me.Btn_AddProducts.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Btn_AddProducts.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.Btn_AddProducts.Font = New System.Drawing.Font("MS Reference Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Btn_AddProducts.ForeColor = System.Drawing.SystemColors.WindowFrame
+        Me.Btn_AddProducts.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
+        Me.Btn_AddProducts.Location = New System.Drawing.Point(440, 371)
+        Me.Btn_AddProducts.Margin = New System.Windows.Forms.Padding(4)
+        Me.Btn_AddProducts.Name = "Btn_AddProducts"
+        Me.Btn_AddProducts.Size = New System.Drawing.Size(171, 48)
+        Me.Btn_AddProducts.TabIndex = 26
+        Me.Btn_AddProducts.Text = "Añadir productos"
+        Me.Btn_AddProducts.UseVisualStyleBackColor = False
+        '
+        'TxtBox_TotalAmount
+        '
+        Me.TxtBox_TotalAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtBox_TotalAmount.ForeColor = System.Drawing.Color.Red
+        Me.TxtBox_TotalAmount.Location = New System.Drawing.Point(283, 495)
+        Me.TxtBox_TotalAmount.Name = "TxtBox_TotalAmount"
+        Me.TxtBox_TotalAmount.Size = New System.Drawing.Size(251, 61)
+        Me.TxtBox_TotalAmount.TabIndex = 27
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(301, 468)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(137, 24)
+        Me.Label7.TabIndex = 28
+        Me.Label7.Text = "Total reserva:"
+        '
+        'Btn_DeleteProduct
+        '
+        Me.Btn_DeleteProduct.AccessibleRole = System.Windows.Forms.AccessibleRole.None
+        Me.Btn_DeleteProduct.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Btn_DeleteProduct.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.Btn_DeleteProduct.Enabled = False
+        Me.Btn_DeleteProduct.Font = New System.Drawing.Font("MS Reference Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Btn_DeleteProduct.ForeColor = System.Drawing.SystemColors.WindowFrame
+        Me.Btn_DeleteProduct.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
+        Me.Btn_DeleteProduct.Location = New System.Drawing.Point(633, 371)
+        Me.Btn_DeleteProduct.Margin = New System.Windows.Forms.Padding(4)
+        Me.Btn_DeleteProduct.Name = "Btn_DeleteProduct"
+        Me.Btn_DeleteProduct.Size = New System.Drawing.Size(171, 48)
+        Me.Btn_DeleteProduct.TabIndex = 29
+        Me.Btn_DeleteProduct.Text = "Borrar producto"
+        Me.Btn_DeleteProduct.UseVisualStyleBackColor = False
+        '
+        'SeeReservationForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.Window
         Me.ClientSize = New System.Drawing.Size(817, 599)
-        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.Btn_DeleteProduct)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.TxtBox_TotalAmount)
+        Me.Controls.Add(Me.Btn_AddProducts)
+        Me.Controls.Add(Me.Btn_EndReservation)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.ListBox_ReservationProds)
         Me.Controls.Add(Me.Btn_Minus)
@@ -278,7 +339,9 @@ Partial Class EditReservationForm
         Me.Controls.Add(Me.TxtBox_Room)
         Me.Controls.Add(Me.DataGridView1)
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.Name = "EditReservationForm"
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
+        Me.Name = "SeeReservationForm"
         Me.Text = "Editar reserva"
         Me.TopMost = True
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -305,5 +368,9 @@ Partial Class EditReservationForm
     Friend WithEvents Btn_Minus As Button
     Friend WithEvents ListBox_ReservationProds As ListBox
     Friend WithEvents Label6 As Label
-    Friend WithEvents Button3 As Button
+    Friend WithEvents Btn_EndReservation As Button
+    Friend WithEvents Btn_AddProducts As Button
+    Friend WithEvents TxtBox_TotalAmount As TextBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Btn_DeleteProduct As Button
 End Class

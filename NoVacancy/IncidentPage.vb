@@ -7,31 +7,19 @@ Public Class IncidentPage
     Dim pwd = "root"
     Dim database = "hotel"
     Dim connectionString = "server=" & server & ";user=" & user & ";password=" & pwd & ";database=" & database
-
     Dim roomsId As New Dictionary(Of String, Integer)()
-    Private Sub IncidentPAge_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+#Region "onLoad region"
+    Private Sub IncidentPage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CB_Type.Items.Add("Mantenimiento")
         CB_Type.Items.Add("Limpieza")
 
         FillRoomComboBox()
     End Sub
+#End Region
 
-    Public Sub FillRoomComboBox()
-        Dim query As String = "SELECT numero_habitacion FROM Habitacion"
-        Dim id = 1
-        Using connection As New MySqlConnection(connectionString)
-            Dim command As New MySqlCommand(query, connection)
-            connection.Open()
-            Dim reader As MySqlDataReader = command.ExecuteReader()
-            While reader.Read()
-                CB_Room.Items.Add(reader("numero_habitacion").ToString())
-                roomsId.Add(reader("numero_habitacion").ToString(), id)
-                id += 1
-            End While
-            reader.Close()
-        End Using
-    End Sub
-
+#Region "Button events region"
+    ' Eventos de clic en botones
     Private Sub Btn_CreateIncident_Click(sender As Object, e As EventArgs) Handles Btn_CreateIncident.Click
         ' Obtener el número de habitación seleccionado
         Dim selectedRoomNumber As String = CB_Room.SelectedItem.ToString()
@@ -64,4 +52,28 @@ Public Class IncidentPage
             MessageBox.Show("Seleccione una habitación válida.")
         End If
     End Sub
+#End Region
+
+#Region "Other controls events region"
+    ' Otros eventos de controles
+#End Region
+
+#Region "Main subs and functions region"
+    ' Funciones y subprocedimientos principales
+    Public Sub FillRoomComboBox()
+        Dim query As String = "SELECT numero_habitacion FROM Habitacion"
+        Dim id = 1
+        Using connection As New MySqlConnection(connectionString)
+            Dim command As New MySqlCommand(query, connection)
+            connection.Open()
+            Dim reader As MySqlDataReader = command.ExecuteReader()
+            While reader.Read()
+                CB_Room.Items.Add(reader("numero_habitacion").ToString())
+                roomsId.Add(reader("numero_habitacion").ToString(), id)
+                id += 1
+            End While
+            reader.Close()
+        End Using
+    End Sub
+#End Region
 End Class

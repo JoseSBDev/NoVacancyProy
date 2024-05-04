@@ -12,35 +12,52 @@ Public Class RoomsPage
     Dim cn As New MySqlConnection(connectionString)
     Dim role
 
+#Region "onLoad region"
     Private Sub RoomsPage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        '[DESCOMENTAR]
         'role = MainPage.role
         'If role! = "Administrador" Or role!= "Gerencia" Or role! = "Recepcion" Then
         '   Btn_UpdateRooms.Enabled = False
         '   DataGridViewRooms.ReadOnly = False
         'End If
-
         Try
             ' Llena el ComboBox de tipos de habitación
             FillComboBoxRoomType()
-
             ' Llena el ComboBox de disponibilidad
             ComboBoxRoomStat.Items.AddRange({"Todas", "Disponible", "Ocupada"})
-
             ' Por defecto, muestra todas las habitaciones
             ComboBoxRoomStat.SelectedIndex = 0
             ComboBoxRoomType.SelectedIndex = 0
 
-
-            ' Actualiza la lista de habitaciones
             UpdateRoomList()
-
         Catch ex As Exception
-            ' Maneja cualquier excepción
             MessageBox.Show("Error: " & ex.Message)
         End Try
     End Sub
+#End Region
 
+#Region "Button events region"
+    ' Eventos de clic en botones
+    Private Sub Btn_Reservations_Click(sender As Object, e As EventArgs) Handles Btn_UpdateRooms.Click
+        UpdateDatabase()
+    End Sub
+#End Region
+
+#Region "Other controls events region"
+    ' Otros eventos de controles
+    Private Sub ComboBoxRoomType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxRoomType.SelectedIndexChanged, ComboBoxRoomStat.SelectedIndexChanged
+        ' Actualiza la lista de habitaciones al cambiar la opción en los ComboBox
+        UpdateRoomList()
+    End Sub
+
+    Private Sub TextBoxRoomNumber_TextChanged(sender As Object, e As EventArgs) Handles TextBoxRoomNumber.TextChanged
+        ' Actualiza la lista de habitaciones al cambiar el texto en el TextBox
+        UpdateRoomList()
+    End Sub
+#End Region
+
+#Region "Main subs and functions region"
+    ' Funciones y subprocedimientos principales
     Private Sub FillComboBoxRoomType()
         Try
             ' Construye la consulta SQL para obtener los tipos de habitación distintos
@@ -137,19 +154,5 @@ Public Class RoomsPage
             End If
         End Try
     End Sub
-
-
-    Private Sub ComboBoxRoomType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxRoomType.SelectedIndexChanged, ComboBoxRoomStat.SelectedIndexChanged
-        ' Actualiza la lista de habitaciones al cambiar la opción en los ComboBox
-        UpdateRoomList()
-    End Sub
-
-    Private Sub TextBoxRoomNumber_TextChanged(sender As Object, e As EventArgs) Handles TextBoxRoomNumber.TextChanged
-        ' Actualiza la lista de habitaciones al cambiar el texto en el TextBox
-        UpdateRoomList()
-    End Sub
-
-    Private Sub Btn_Reservations_Click(sender As Object, e As EventArgs) Handles Btn_UpdateRooms.Click
-        UpdateDatabase()
-    End Sub
+#End Region
 End Class

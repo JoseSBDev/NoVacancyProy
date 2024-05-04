@@ -59,7 +59,7 @@ Partial Class NewReservationPage
         Me.Panel1.Controls.Add(Me.TxtBox_Name)
         Me.Panel1.Controls.Add(Me.ChkBox_NewClient)
         Me.Panel1.Location = New System.Drawing.Point(16, 15)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(468, 262)
         Me.Panel1.TabIndex = 0
@@ -69,11 +69,12 @@ Partial Class NewReservationPage
         Me.Btn_CreateClient.AccessibleRole = System.Windows.Forms.AccessibleRole.None
         Me.Btn_CreateClient.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Btn_CreateClient.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.Btn_CreateClient.Enabled = False
         Me.Btn_CreateClient.Font = New System.Drawing.Font("MS Reference Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Btn_CreateClient.ForeColor = System.Drawing.SystemColors.WindowFrame
         Me.Btn_CreateClient.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
         Me.Btn_CreateClient.Location = New System.Drawing.Point(277, 207)
-        Me.Btn_CreateClient.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Btn_CreateClient.Margin = New System.Windows.Forms.Padding(4)
         Me.Btn_CreateClient.Name = "Btn_CreateClient"
         Me.Btn_CreateClient.Size = New System.Drawing.Size(187, 52)
         Me.Btn_CreateClient.TabIndex = 4
@@ -84,7 +85,7 @@ Partial Class NewReservationPage
         '
         Me.TxtBox_Phone.Enabled = False
         Me.TxtBox_Phone.Location = New System.Drawing.Point(19, 127)
-        Me.TxtBox_Phone.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TxtBox_Phone.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtBox_Phone.Name = "TxtBox_Phone"
         Me.TxtBox_Phone.Size = New System.Drawing.Size(421, 22)
         Me.TxtBox_Phone.TabIndex = 2
@@ -93,7 +94,7 @@ Partial Class NewReservationPage
         '
         Me.TxtBox_Mail.Enabled = False
         Me.TxtBox_Mail.Location = New System.Drawing.Point(19, 159)
-        Me.TxtBox_Mail.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TxtBox_Mail.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtBox_Mail.Name = "TxtBox_Mail"
         Me.TxtBox_Mail.Size = New System.Drawing.Size(421, 22)
         Me.TxtBox_Mail.TabIndex = 3
@@ -102,7 +103,7 @@ Partial Class NewReservationPage
         '
         Me.TxtBox_Name.Enabled = False
         Me.TxtBox_Name.Location = New System.Drawing.Point(19, 95)
-        Me.TxtBox_Name.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TxtBox_Name.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtBox_Name.Name = "TxtBox_Name"
         Me.TxtBox_Name.Size = New System.Drawing.Size(421, 22)
         Me.TxtBox_Name.TabIndex = 1
@@ -111,7 +112,7 @@ Partial Class NewReservationPage
         '
         Me.ChkBox_NewClient.AutoSize = True
         Me.ChkBox_NewClient.Location = New System.Drawing.Point(19, 18)
-        Me.ChkBox_NewClient.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ChkBox_NewClient.Margin = New System.Windows.Forms.Padding(4)
         Me.ChkBox_NewClient.Name = "ChkBox_NewClient"
         Me.ChkBox_NewClient.Size = New System.Drawing.Size(153, 21)
         Me.ChkBox_NewClient.TabIndex = 0
@@ -132,7 +133,7 @@ Partial Class NewReservationPage
         Me.Panel2.Controls.Add(Me.Label1)
         Me.Panel2.Controls.Add(Me.TxtBox_Room)
         Me.Panel2.Location = New System.Drawing.Point(16, 284)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1015, 226)
         Me.Panel2.TabIndex = 1
@@ -146,7 +147,7 @@ Partial Class NewReservationPage
         Me.Btn_AcceptReservation.ForeColor = System.Drawing.SystemColors.WindowFrame
         Me.Btn_AcceptReservation.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
         Me.Btn_AcceptReservation.Location = New System.Drawing.Point(824, 171)
-        Me.Btn_AcceptReservation.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Btn_AcceptReservation.Margin = New System.Windows.Forms.Padding(4)
         Me.Btn_AcceptReservation.Name = "Btn_AcceptReservation"
         Me.Btn_AcceptReservation.Size = New System.Drawing.Size(187, 52)
         Me.Btn_AcceptReservation.TabIndex = 10
@@ -188,7 +189,7 @@ Partial Class NewReservationPage
         '
         Me.TxtBox_Enddate.Enabled = False
         Me.TxtBox_Enddate.Location = New System.Drawing.Point(231, 154)
-        Me.TxtBox_Enddate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TxtBox_Enddate.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtBox_Enddate.Name = "TxtBox_Enddate"
         Me.TxtBox_Enddate.Size = New System.Drawing.Size(132, 22)
         Me.TxtBox_Enddate.TabIndex = 6
@@ -207,7 +208,7 @@ Partial Class NewReservationPage
         '
         Me.TxtBox_Type.Enabled = False
         Me.TxtBox_Type.Location = New System.Drawing.Point(231, 69)
-        Me.TxtBox_Type.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TxtBox_Type.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtBox_Type.Name = "TxtBox_Type"
         Me.TxtBox_Type.Size = New System.Drawing.Size(132, 22)
         Me.TxtBox_Type.TabIndex = 4
@@ -226,7 +227,7 @@ Partial Class NewReservationPage
         '
         Me.TxtBox_Startdate.Enabled = False
         Me.TxtBox_Startdate.Location = New System.Drawing.Point(19, 154)
-        Me.TxtBox_Startdate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TxtBox_Startdate.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtBox_Startdate.Name = "TxtBox_Startdate"
         Me.TxtBox_Startdate.Size = New System.Drawing.Size(132, 22)
         Me.TxtBox_Startdate.TabIndex = 2
@@ -245,7 +246,7 @@ Partial Class NewReservationPage
         '
         Me.TxtBox_Room.Enabled = False
         Me.TxtBox_Room.Location = New System.Drawing.Point(19, 69)
-        Me.TxtBox_Room.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TxtBox_Room.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtBox_Room.Name = "TxtBox_Room"
         Me.TxtBox_Room.Size = New System.Drawing.Size(132, 22)
         Me.TxtBox_Room.TabIndex = 0
@@ -258,7 +259,7 @@ Partial Class NewReservationPage
         Me.Pnl_SearchClient.Controls.Add(Me.TxtBox_ClientPhone)
         Me.Pnl_SearchClient.Controls.Add(Me.TxtBox_SearchClient)
         Me.Pnl_SearchClient.Location = New System.Drawing.Point(492, 15)
-        Me.Pnl_SearchClient.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Pnl_SearchClient.Margin = New System.Windows.Forms.Padding(4)
         Me.Pnl_SearchClient.Name = "Pnl_SearchClient"
         Me.Pnl_SearchClient.Size = New System.Drawing.Size(461, 262)
         Me.Pnl_SearchClient.TabIndex = 4
@@ -272,7 +273,7 @@ Partial Class NewReservationPage
         Me.Btn_CheckClient.ForeColor = System.Drawing.SystemColors.WindowFrame
         Me.Btn_CheckClient.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
         Me.Btn_CheckClient.Location = New System.Drawing.Point(271, 207)
-        Me.Btn_CheckClient.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Btn_CheckClient.Margin = New System.Windows.Forms.Padding(4)
         Me.Btn_CheckClient.Name = "Btn_CheckClient"
         Me.Btn_CheckClient.Size = New System.Drawing.Size(187, 52)
         Me.Btn_CheckClient.TabIndex = 4
@@ -293,7 +294,7 @@ Partial Class NewReservationPage
         '
         Me.TxtBox_ClientName.Enabled = False
         Me.TxtBox_ClientName.Location = New System.Drawing.Point(19, 127)
-        Me.TxtBox_ClientName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TxtBox_ClientName.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtBox_ClientName.Name = "TxtBox_ClientName"
         Me.TxtBox_ClientName.Size = New System.Drawing.Size(421, 22)
         Me.TxtBox_ClientName.TabIndex = 2
@@ -302,7 +303,7 @@ Partial Class NewReservationPage
         '
         Me.TxtBox_ClientPhone.Enabled = False
         Me.TxtBox_ClientPhone.Location = New System.Drawing.Point(19, 159)
-        Me.TxtBox_ClientPhone.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TxtBox_ClientPhone.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtBox_ClientPhone.Name = "TxtBox_ClientPhone"
         Me.TxtBox_ClientPhone.Size = New System.Drawing.Size(421, 22)
         Me.TxtBox_ClientPhone.TabIndex = 3
@@ -310,7 +311,7 @@ Partial Class NewReservationPage
         'TxtBox_SearchClient
         '
         Me.TxtBox_SearchClient.Location = New System.Drawing.Point(19, 95)
-        Me.TxtBox_SearchClient.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TxtBox_SearchClient.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtBox_SearchClient.Name = "TxtBox_SearchClient"
         Me.TxtBox_SearchClient.Size = New System.Drawing.Size(421, 22)
         Me.TxtBox_SearchClient.TabIndex = 1
@@ -319,13 +320,17 @@ Partial Class NewReservationPage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.Window
         Me.ClientSize = New System.Drawing.Size(1067, 554)
         Me.Controls.Add(Me.Pnl_SearchClient)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
+        Me.Margin = New System.Windows.Forms.Padding(4)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "NewReservationPage"
-        Me.Text = "NewReservationPage"
+        Me.Text = "Nueva reserva"
         Me.TopMost = True
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()

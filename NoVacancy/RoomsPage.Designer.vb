@@ -129,10 +129,12 @@ Partial Class RoomsPage
         Me.Controls.Add(Me.TextBoxRoomNumber)
         Me.Controls.Add(Me.ComboBoxRoomStat)
         Me.Controls.Add(Me.DataGridViewRooms)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "RoomsPage"
-        Me.Text = "RoomsPage"
+        Me.Text = "Habitaciones"
+        Me.TopMost = True
         CType(Me.DataGridViewRooms, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

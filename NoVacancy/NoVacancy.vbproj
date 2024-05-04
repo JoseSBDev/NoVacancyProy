@@ -113,10 +113,10 @@
     <Compile Include="ConfigPage.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditReservationForm.Designer.vb">
-      <DependentUpon>EditReservationForm.vb</DependentUpon>
+    <Compile Include="SeeReservationForm.Designer.vb">
+      <DependentUpon>SeeReservationForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="EditReservationForm.vb">
+    <Compile Include="SeeReservationForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="IncidentPage.Designer.vb">
@@ -177,12 +177,6 @@
     <Compile Include="ReservationPage.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RoomDispositionPage.Designer.vb">
-      <DependentUpon>RoomDispositionPage.vb</DependentUpon>
-    </Compile>
-    <Compile Include="RoomDispositionPage.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="RoomsPage.Designer.vb">
       <DependentUpon>RoomsPage.vb</DependentUpon>
     </Compile>
@@ -197,8 +191,8 @@
     <EmbeddedResource Include="ConfigPage.resx">
       <DependentUpon>ConfigPage.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditReservationForm.resx">
-      <DependentUpon>EditReservationForm.vb</DependentUpon>
+    <EmbeddedResource Include="SeeReservationForm.resx">
+      <DependentUpon>SeeReservationForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IncidentPage.resx">
       <DependentUpon>IncidentPage.vb</DependentUpon>

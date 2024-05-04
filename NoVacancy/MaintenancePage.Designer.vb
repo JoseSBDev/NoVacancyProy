@@ -172,10 +172,12 @@ Partial Class MaintenancePage
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TxtBox_Room)
         Me.Controls.Add(Me.DataGridView1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "MaintenancePage"
-        Me.Text = "MaintenancePage"
+        Me.Text = "Panel del servicio de mantenimiento"
+        Me.TopMost = True
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
