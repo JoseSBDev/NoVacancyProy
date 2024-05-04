@@ -181,6 +181,7 @@ Partial Class MainPage
         Me.WebBrowser1.Name = "WebBrowser1"
         Me.WebBrowser1.Size = New System.Drawing.Size(546, 463)
         Me.WebBrowser1.TabIndex = 17
+        Me.WebBrowser1.Visible = False
         '
         'PB_ChangeUser
         '
@@ -205,7 +206,7 @@ Partial Class MainPage
         'PictureBox1
         '
         Me.PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.PictureBox1.Image = Global.NoVacancy.My.Resources.Resources.Black_Gold_Simple_Modern_Villa___Homestay_Logo
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
         Me.PictureBox1.Location = New System.Drawing.Point(319, 80)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(500, 500)

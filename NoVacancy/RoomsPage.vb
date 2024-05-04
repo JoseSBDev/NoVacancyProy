@@ -16,8 +16,10 @@ Public Class RoomsPage
 
         'role = MainPage.role
         'If role! = "Administrador" Or role!= "Gerencia" Or role! = "Recepcion" Then
-        '    Btn_UpdateRooms.Enabled = False
+        '   Btn_UpdateRooms.Enabled = False
+        '   DataGridViewRooms.ReadOnly = False
         'End If
+
         Try
             ' Llena el ComboBox de tipos de habitación
             FillComboBoxRoomType()
@@ -110,7 +112,7 @@ Public Class RoomsPage
 
             ' Asigna el origen de datos al DataGridView
             DataGridViewRooms.DataSource = dataSet.Tables("habitacion")
-
+            DataGridViewRooms.Columns("estado").Visible = False
         Catch ex As Exception
             ' Maneja cualquier excepción
             MessageBox.Show("Error al actualizar la lista de habitaciones: " & ex.Message)
@@ -122,24 +124,14 @@ Public Class RoomsPage
 
     Private Sub UpdateDatabase()
         Try
-            ' Abre la conexión
             cn.Open()
-
-            ' Actualiza la base de datos utilizando los comandos necesarios
-            ' Por ejemplo, si tienes un DataSet con cambios pendientes, puedes llamar a Update en el adaptador de datos correspondiente para aplicar esos cambios a la base de datos
             dataAdapterRooms.Update(dataSet, "habitacion")
-
-            ' Cierra la conexión
             cn.Close()
-
-            ' Muestra un mensaje de éxito
             MessageBox.Show("Base de datos actualizada correctamente.")
-
+            UpdateRoomList()
         Catch ex As Exception
-            ' Maneja cualquier excepción
             MessageBox.Show("Error al actualizar la base de datos: " & ex.Message)
         Finally
-            ' Asegúrate de cerrar la conexión en caso de error
             If cn.State = ConnectionState.Open Then
                 cn.Close()
             End If

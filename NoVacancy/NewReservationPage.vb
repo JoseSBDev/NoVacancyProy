@@ -7,6 +7,7 @@ Public Class NewReservationPage
     Public roomNumber As Integer
     Public roomPrice As Double
     Public roomType As String
+    Public reservationPrice As Integer
     Dim server = "localhost"
     Dim user = "root"
     Dim pwd = "root"
@@ -45,8 +46,8 @@ Public Class NewReservationPage
         TxtBox_Enddate.Text = endDate.ToString("yyyy-MM-dd")
 
         Dim daysDiff As Integer = (endDate - startDate).Days
-        Lbl_Price.Text = roomPrice * daysDiff
-
+        reservationPrice = roomPrice * daysDiff
+        Lbl_Price.Text = reservationPrice
         CheckIfAble()
     End Sub
 
@@ -243,13 +244,14 @@ Public Class NewReservationPage
 
         If ableToReserve = True Then
             clientId = CheckClientId(clientEmail)
-            Dim insert As String = "INSERT INTO Reserva (id_cliente, id_habitacion, fecha_inicio, fecha_fin) VALUES (@id_cliente, @id_habitacion, @startdate, @enddate)"
+            Dim insert As String = "INSERT INTO Reserva (id_cliente, id_habitacion, fecha_inicio, fecha_fin, precio_reserva) VALUES (@id_cliente, @id_habitacion, @startdate, @enddate, @reservationPrice)"
             Using connection As New MySqlConnection(connectionString)
                 Dim command As New MySqlCommand(insert, connection)
                 command.Parameters.AddWithValue("@id_cliente", clientId)
                 command.Parameters.AddWithValue("@id_habitacion", roomId)
                 command.Parameters.AddWithValue("@startdate", startDate)
                 command.Parameters.AddWithValue("@enddate", endDate)
+                command.Parameters.AddWithValue("@reservationPrice", reservationPrice)
                 Try
                     connection.Open()
                     command.ExecuteNonQuery()

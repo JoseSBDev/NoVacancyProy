@@ -96,7 +96,7 @@ Public Class ReservationPage
 #End Region
 
 
-    Private Sub Btn_EditReservation_Click(sender As Object, e As EventArgs) Handles Btn_EditReservation.Click
+    Private Sub Btn_SeeReservation_Click(sender As Object, e As EventArgs) Handles Btn_SeeReservation.Click
         If DataGridView1.SelectedRows.Count = 1 AndAlso roomState = "Ocupada" Then
             EditReservationForm.ShowDialog()
             ShowAvailableRooms(startDate, endDate)

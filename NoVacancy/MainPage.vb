@@ -7,7 +7,7 @@ Public Class MainPage
     Dim weatherHide As Boolean = False
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'SelectUser()
-
+        ConfigPage.SetTheme()
         Dim x As Integer = (Me.ClientSize.Width - PictureBox1.Width) \ 2
         Dim y As Integer = (Me.ClientSize.Height - PictureBox1.Height) \ 2
         PictureBox1.Location = New Point(x, y)
@@ -108,6 +108,7 @@ Public Class MainPage
     Private Sub PB_Weather_Click(sender As Object, e As EventArgs) Handles PB_Weather.Click
         If weatherOpen = False Then
             If weatherHide = False Then
+                WebBrowser1.Visible = True
                 WebBrowser1.ScriptErrorsSuppressed = True ' Esto suprime los errores de script
                 WebBrowser1.Navigate("https://www.eltiempo.es/valencia.html")
                 weatherOpen = True
@@ -145,5 +146,9 @@ Public Class MainPage
 
     Private Sub Btn_Cleaning_Click(sender As Object, e As EventArgs) Handles Btn_Cleaning.Click
         CleaningServicesPage.Show()
+    End Sub
+
+    Private Sub Btn_Inventory_Click(sender As Object, e As EventArgs) Handles Btn_Inventory.Click
+        InventoryPage.Show()
     End Sub
 End Class
