@@ -70,7 +70,7 @@ Public Class SeeReservationForm
     End Sub
 
     Private Sub Btn_EndReservation_Click(sender As Object, e As EventArgs) Handles Btn_EndReservation.Click
-
+        InvoiceReportPage.ShowDialog()
     End Sub
 
     Private Sub Btn_DeleteProduct_Click(sender As Object, e As EventArgs) Handles Btn_DeleteProduct.Click
