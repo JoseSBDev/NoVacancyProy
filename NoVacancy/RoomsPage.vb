@@ -14,17 +14,10 @@ Public Class RoomsPage
 
 #Region "onLoad region"
     Private Sub RoomsPage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        '[DESCOMENTAR]
-        'role = MainPage.role
-        'If role! = "Administrador" Or role!= "Gerencia" Or role! = "Recepcion" Then
-        '   Btn_UpdateRooms.Enabled = False
-        '   DataGridViewRooms.ReadOnly = False
-        'End If
         Try
-            ' Llena el ComboBox de tipos de habitación
             FillComboBoxRoomType()
-            ' Llena el ComboBox de disponibilidad
             ComboBoxRoomStat.Items.AddRange({"Todas", "Disponible", "Ocupada"})
+
             ' Por defecto, muestra todas las habitaciones
             ComboBoxRoomStat.SelectedIndex = 0
             ComboBoxRoomType.SelectedIndex = 0
@@ -38,111 +31,106 @@ Public Class RoomsPage
 
 #Region "Button events region"
     ' Eventos de clic en botones
-    Private Sub Btn_Reservations_Click(sender As Object, e As EventArgs) Handles Btn_UpdateRooms.Click
+
+    'Llama a UpdateDatabase
+    Private Sub Btn_UpdateRooms_Click(sender As Object, e As EventArgs) Handles Btn_UpdateRooms.Click
         UpdateDatabase()
     End Sub
 #End Region
 
 #Region "Other controls events region"
     ' Otros eventos de controles
+
+    ' Actualiza la lista de habitaciones al cambiar la opción en los ComboBox
     Private Sub ComboBoxRoomType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxRoomType.SelectedIndexChanged, ComboBoxRoomStat.SelectedIndexChanged
-        ' Actualiza la lista de habitaciones al cambiar la opción en los ComboBox
         UpdateRoomList()
     End Sub
 
+    ' Actualiza la lista de habitaciones al cambiar el texto en el TextBox
     Private Sub TextBoxRoomNumber_TextChanged(sender As Object, e As EventArgs) Handles TextBoxRoomNumber.TextChanged
-        ' Actualiza la lista de habitaciones al cambiar el texto en el TextBox
         UpdateRoomList()
     End Sub
 #End Region
 
 #Region "Main subs and functions region"
     ' Funciones y subprocedimientos principales
+
+    'Rellena el combobox de tipo de habitación
     Private Sub FillComboBoxRoomType()
         Try
-            ' Construye la consulta SQL para obtener los tipos de habitación distintos
             Dim sqlQuery As String = "SELECT DISTINCT tipo FROM habitacion"
-
-            ' Crea un comando para ejecutar la consulta
             Dim cmd As New MySqlCommand(sqlQuery, cn)
-
-            ' Abre la conexión
             cn.Open()
 
-            ' Crea un lector de datos para obtener los resultados de la consulta
             Dim reader As MySqlDataReader = cmd.ExecuteReader()
-
-            ' Limpia los elementos previos del ComboBox
             ComboBoxRoomType.Items.Clear()
             ComboBoxRoomType.Items.Add("Todas")
 
-            ' Recorre los resultados y añade los tipos de habitación al ComboBox
             While reader.Read()
                 ComboBoxRoomType.Items.Add(reader("tipo").ToString())
             End While
 
-            ' Cierra el lector de datos
             reader.Close()
-
         Catch ex As Exception
             MessageBox.Show("Error al llenar el ComboBox de tipos de habitación: " & ex.Message)
         Finally
-            ' Cierra la conexión
             cn.Close()
         End Try
     End Sub
 
+    'Updatea la lista de las habitaciones según los valores selecionados en los combobox o el textbox
     Private Sub UpdateRoomList()
         Try
-            ' Construye la consulta SQL base
             Dim sqlQuery As String = "SELECT * FROM habitacion WHERE 1 = 1"
 
-            ' Filtra por tipo de habitación si se selecciona uno en el ComboBox
             If ComboBoxRoomType.SelectedIndex > 0 Then
                 sqlQuery &= " AND tipo = '" & ComboBoxRoomType.SelectedItem.ToString() & "'"
             ElseIf ComboBoxRoomType.SelectedIndex = 0 Then
                 sqlQuery &= " AND tipo = tipo "
             End If
 
-            ' Filtra por disponibilidad según lo seleccionado en el ComboBox de disponibilidad
             If ComboBoxRoomStat.SelectedIndex = 1 Then
-                sqlQuery &= " AND estado = 'Disponible'" ' Habitaciones disponibles
+                sqlQuery &= " AND estado = 'Disponible'"
             ElseIf ComboBoxRoomStat.SelectedIndex = 2 Then
-                sqlQuery &= " AND estado = 'Ocupada'" ' Habitaciones no disponibles
+                sqlQuery &= " AND estado = 'Ocupada'"
             End If
 
             If Not String.IsNullOrEmpty(TextBoxRoomNumber.Text) Then
                 sqlQuery &= " AND numero_habitacion = " & TextBoxRoomNumber.Text
             End If
 
-            ' Crea el adaptador de datos con la consulta SQL actualizada
             dataAdapterRooms = New MySqlDataAdapter(sqlQuery, cn)
-
-            ' Crea un nuevo DataSet
             dataSet = New DataSet
 
-            ' Abre la conexión
             cn.Open()
-
-            ' Rellena el DataSet con la información
             dataAdapterRooms.Fill(dataSet, "habitacion")
 
-            ' Asigna el origen de datos al DataGridView
             DataGridViewRooms.DataSource = dataSet.Tables("habitacion")
-            DataGridViewRooms.Columns("estado").Visible = False
+            DataGridViewRooms.Columns("estado").Visible = True
         Catch ex As Exception
-            ' Maneja cualquier excepción
             MessageBox.Show("Error al actualizar la lista de habitaciones: " & ex.Message)
         Finally
-            ' Cierra la conexión
             cn.Close()
         End Try
     End Sub
 
+    'Actualiza la bbdd con los datos editados
     Private Sub UpdateDatabase()
         Try
             cn.Open()
-            dataAdapterRooms.Update(dataSet, "habitacion")
+
+            For Each row As DataRow In dataSet.Tables("Habitacion").Rows
+                If row.RowState = DataRowState.Modified Then
+                    Dim updateCommand As New MySqlCommand("UPDATE Habitacion SET numero_habitacion = @numero_habitacion, tipo = @tipo, estado = @estado, precio = @precio WHERE id_habitacion = @id_habitacion", cn)
+                    updateCommand.Parameters.AddWithValue("@numero_habitacion", row("numero_habitacion"))
+                    updateCommand.Parameters.AddWithValue("@tipo", row("tipo"))
+                    updateCommand.Parameters.AddWithValue("@estado", row("estado"))
+                    updateCommand.Parameters.AddWithValue("@precio", row("precio"))
+                    updateCommand.Parameters.AddWithValue("@id_habitacion", row("id_habitacion"))
+                    updateCommand.ExecuteNonQuery()
+                End If
+            Next
+
             cn.Close()
             MessageBox.Show("Base de datos actualizada correctamente.")
             UpdateRoomList()
@@ -154,5 +142,6 @@ Public Class RoomsPage
             End If
         End Try
     End Sub
+
 #End Region
 End Class

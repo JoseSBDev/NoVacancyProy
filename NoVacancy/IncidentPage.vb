@@ -20,37 +20,10 @@ Public Class IncidentPage
 
 #Region "Button events region"
     ' Eventos de clic en botones
+
+    'Llama a create incident
     Private Sub Btn_CreateIncident_Click(sender As Object, e As EventArgs) Handles Btn_CreateIncident.Click
-        ' Obtener el número de habitación seleccionado
-        Dim selectedRoomNumber As String = CB_Room.SelectedItem.ToString()
-
-        ' Obtener el ID de la habitación seleccionada del diccionario
-        Dim roomId As Integer = -1
-        If roomsId.ContainsKey(selectedRoomNumber) Then
-            roomId = roomsId(selectedRoomNumber)
-        End If
-
-        ' Verificar si se seleccionó una habitación válida
-        If roomId <> -1 Then
-            ' Obtener los otros datos necesarios del incidente
-            Dim incidentType As String = CB_Type.Text
-            Dim description As String = RTB_Description.Text
-
-            ' Insertar la incidencia en la base de datos
-            Dim query As String = "INSERT INTO incidencia(id_habitacion, tipo, descripcion) VALUES (@roomId, @incidentType, @description)"
-            Using connection As New MySqlConnection(connectionString)
-                Dim command As New MySqlCommand(query, connection)
-                command.Parameters.AddWithValue("@roomId", roomId)
-                command.Parameters.AddWithValue("@incidentType", incidentType)
-                command.Parameters.AddWithValue("@description", description)
-                connection.Open()
-                command.ExecuteNonQuery()
-            End Using
-            MsgBox("Incidencia enviada.")
-            Me.Close()
-        Else
-            MessageBox.Show("Seleccione una habitación válida.")
-        End If
+        CreateIncident()
     End Sub
 #End Region
 
@@ -74,6 +47,37 @@ Public Class IncidentPage
             End While
             reader.Close()
         End Using
+    End Sub
+
+    Private Sub CreateIncident()
+        Dim selectedRoomNumber As String = CB_Room.SelectedItem.ToString()
+        Dim roomId As Integer = -1
+        If roomsId.ContainsKey(selectedRoomNumber) Then
+            roomId = roomsId(selectedRoomNumber)
+        End If
+
+        'Verificar si se seleccionó una habitación válida
+        If roomId <> -1 Then
+            Dim incidentType As String = CB_Type.Text
+            Dim description As String = RTB_Description.Text
+            Dim today As Date = Now
+
+            Dim query As String = $"INSERT INTO {incidentType}(id_habitacion, descripcion, fecha) VALUES (@roomId, @description, @date)"
+
+            Using connection As New MySqlConnection(connectionString)
+                Dim command As New MySqlCommand(query, connection)
+                command.Parameters.AddWithValue("@roomId", roomId)
+                'command.Parameters.AddWithValue("@incidentType", incidentType)
+                command.Parameters.AddWithValue("@description", description)
+                command.Parameters.AddWithValue("@date", today.ToString("yyyy-MM-dd"))
+                connection.Open()
+                command.ExecuteNonQuery()
+            End Using
+            MsgBox("Incidencia enviada.")
+            Me.Close()
+        Else
+            MessageBox.Show("Seleccione una habitación válida.")
+        End If
     End Sub
 #End Region
 End Class

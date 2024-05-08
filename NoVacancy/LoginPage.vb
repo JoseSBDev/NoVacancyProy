@@ -53,7 +53,7 @@ Public Class LoginPage
                     roleCommand.Parameters.AddWithValue("@Username", username)
                     role = roleCommand.ExecuteScalar().ToString()
 
-                    MessageBox.Show("Inicio de sesión exitoso" & role)
+                    MessageBox.Show("Inicio de sesión exitoso")
                     loggedIn = True
 
                     Select Case role

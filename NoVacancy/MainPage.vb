@@ -7,7 +7,7 @@ Public Class MainPage
     Dim weatherHide As Boolean = False
 #Region "onLoad region"
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'SelectUser()
+        SelectUser()
         ConfigPage.SetTheme()
         Dim x As Integer = (Me.ClientSize.Width - PictureBox1.Width) \ 2
         Dim y As Integer = (Me.ClientSize.Height - PictureBox1.Height) \ 2
@@ -34,7 +34,7 @@ Public Class MainPage
     End Sub
 
     Private Sub Btn_Incident_Click(sender As Object, e As EventArgs) Handles Btn_Incident.Click
-        IncidentPage.ShowDialog()
+        IncidentPage.Show()
     End Sub
 
     Private Sub Btn_Maintenance_Click(sender As Object, e As EventArgs) Handles Btn_Maintenance.Click
@@ -93,6 +93,8 @@ Public Class MainPage
 
 #Region "Main subs and functions region"
     ' Funciones y subprocedimientos principales
+
+    'Dependiendo del rol seleccionado le asigna los permisos, a continuación, cambia el color en función si está habilitado o no. 
     Private Sub SelectUser()
         LoginPage.ShowDialog()
         If LoginPage.loggedIn = False Then
@@ -109,30 +111,45 @@ Public Class MainPage
                 Btn_Incident.Enabled = True
                 Btn_Reservations.Enabled = True
                 Btn_Maintenance.Enabled = True
-                RoomsPage.Btn_UpdateRooms.Enabled = True
                 Btn_Inventory.Enabled = True
+                RoomsPage.Btn_UpdateRooms.Enabled = True
+                RoomsPage.DataGridViewRooms.ReadOnly = False
             Case "Gerencia"
                 Btn_Cleaning.Enabled = True
                 Btn_Config.Enabled = True
                 Btn_Incident.Enabled = True
                 Btn_Reservations.Enabled = True
                 Btn_Maintenance.Enabled = True
-                RoomsPage.Btn_UpdateRooms.Enabled = True
                 Btn_Inventory.Enabled = True
+                RoomsPage.Btn_UpdateRooms.Enabled = True
+                RoomsPage.DataGridViewRooms.ReadOnly = False
             Case "Recepcion"
+                Btn_Cleaning.Enabled = False
+                Btn_Config.Enabled = True
+                Btn_Incident.Enabled = True
+                Btn_Reservations.Enabled = True
                 Btn_Maintenance.Enabled = False
-                Btn_Config.Enabled = False
+                Btn_Inventory.Enabled = True
                 RoomsPage.Btn_UpdateRooms.Enabled = False
+                RoomsPage.DataGridViewRooms.ReadOnly = True
             Case "Limpieza"
+                Btn_Cleaning.Enabled = True
+                Btn_Config.Enabled = False
+                Btn_Incident.Enabled = True
                 Btn_Reservations.Enabled = False
                 Btn_Maintenance.Enabled = False
-                Btn_Config.Enabled = False
-                RoomsPage.Btn_UpdateRooms.Enabled = False
-            Case "Mantenimiento"
-                Btn_Reservations.Enabled = False
                 Btn_Inventory.Enabled = False
-                Btn_Config.Enabled = False
                 RoomsPage.Btn_UpdateRooms.Enabled = False
+                RoomsPage.DataGridViewRooms.ReadOnly = True
+            Case "Mantenimiento"
+                Btn_Cleaning.Enabled = False
+                Btn_Config.Enabled = False
+                Btn_Incident.Enabled = True
+                Btn_Reservations.Enabled = False
+                Btn_Maintenance.Enabled = True
+                Btn_Inventory.Enabled = False
+                RoomsPage.Btn_UpdateRooms.Enabled = False
+                RoomsPage.DataGridViewRooms.ReadOnly = True
         End Select
 
         For Each ctrl As Control In Me.Controls

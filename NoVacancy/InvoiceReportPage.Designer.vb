@@ -24,12 +24,22 @@ Partial Class InvoiceReportPage
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
-        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.ClienteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.InvoiceDataset = New NoVacancy.InvoiceDataset()
+        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         CType(Me.ClienteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.InvoiceDataset, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'ClienteBindingSource
+        '
+        Me.ClienteBindingSource.DataMember = "Cliente"
+        Me.ClienteBindingSource.DataSource = Me.InvoiceDataset
+        '
+        'InvoiceDataset
+        '
+        Me.InvoiceDataset.DataSetName = "InvoiceDataset"
+        Me.InvoiceDataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'ReportViewer1
         '
@@ -43,16 +53,6 @@ Partial Class InvoiceReportPage
         Me.ReportViewer1.ServerReport.BearerToken = Nothing
         Me.ReportViewer1.Size = New System.Drawing.Size(800, 450)
         Me.ReportViewer1.TabIndex = 0
-        '
-        'ClienteBindingSource
-        '
-        Me.ClienteBindingSource.DataMember = "Cliente"
-        Me.ClienteBindingSource.DataSource = Me.InvoiceDataset
-        '
-        'InvoiceDataset
-        '
-        Me.InvoiceDataset.DataSetName = "InvoiceDataset"
-        Me.InvoiceDataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'InvoiceReportPage
         '

@@ -9,18 +9,15 @@ Public Class InvoiceReportPage
     Dim connectionString = "server=" & server & ";user=" & user & ";password=" & pwd & ";database=" & database
     Dim reservationId = SeeReservationForm.reservationId
 
+#Region "onLoad"
     Private Sub InvoiceReportPage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         GenerateProductReport()
-        'GenerateReservationReport()
-        'Me.ReportViewer1.RefreshReport()
     End Sub
+#End Region
 
+#Region "main functions"
+    'Funcion para recuperar los datos necesarios para la factura 
     Public Sub GenerateProductReport()
-        'Dim query As String = " SELECT p.nombre as nombre, pr.cantidad as cantidad, p.precio as precio
-        '                        FROM Producto p
-        '                        LEFT JOIN ProductosDeLaReserva pr ON p.id_producto = pr.id_producto
-        '                        WHERE pr.id_reserva = @reservation_id" 
         Dim query As String = "SELECT 
                                     c.nombre AS nombre, 
                                     c.telefono AS telefono, 
@@ -48,16 +45,13 @@ Public Class InvoiceReportPage
                                 JOIN 
 	                                factura f on f.id_reserva = r.id_reserva
                                 WHERE 
-                                    r.id_reserva = 1"
-        Dim startDate As New Date
-        Dim endDate As New Date
-        Dim precio As Integer
+                                    r.id_reserva = @reservation_id"
         Try
             Using connection As New MySqlConnection(connectionString)
                 Dim adapter As New MySqlDataAdapter(query, connection)
                 Dim dataTable As New DataTable()
 
-                'adapter.SelectCommand.Parameters.AddWithValue("@reservation_id", reservationId)
+                adapter.SelectCommand.Parameters.AddWithValue("@reservation_id", reservationId)
                 adapter.Fill(dataTable)
 
                 ReportViewer1.LocalReport.DataSources.Clear()
@@ -70,29 +64,6 @@ Public Class InvoiceReportPage
         End Try
 
     End Sub
-
-    Public Sub GenerateReservationReport()
-        Dim query As String = "SELECT r.fecha_inicio, r.fecha_fin, h.precio
-                               FROM Reserva r
-                               LEFT JOIN Habitacion h ON r.id_habitacion = h.id_habitacion
-                               WHERE r.id_reserva = @reservation_id"
-
-        Try
-            Using connection As New MySqlConnection(connectionString)
-                Dim adapter As New MySqlDataAdapter(query, connection)
-                adapter.SelectCommand.Parameters.AddWithValue("@reservation_id", reservationId)
-
-                Dim dataTable As New DataTable()
-                adapter.Fill(dataTable)
-
-                ReportViewer1.LocalReport.DataSources.Clear()
-                Dim reportDataTable As New ReportDataSource("dsInvoice", dataTable)
-                ReportViewer1.LocalReport.DataSources.Add(reportDataTable)
-                ReportViewer1.RefreshReport()
-            End Using
-        Catch ex As Exception
-            MessageBox.Show("Error al generar el informe: " & ex.Message)
-        End Try
-    End Sub
+#End Region
 
 End Class

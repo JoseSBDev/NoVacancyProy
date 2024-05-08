@@ -22,13 +22,14 @@ Public Class ReservationPage
 
         'Controlar que se seleccione toda la fila para que el boton de nueva reserva funcione como se espera
         DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        'FillDataGridView()
         ShowAvailableRooms(startDate, endDate)
     End Sub
 #End Region
 
 #Region "Button events region"
     ' Eventos de clic en botones
+
+    'Muestra la página de la reserva en caso de estar seleccionada una fila de una reserva ocupada
     Private Sub Btn_SeeReservation_Click(sender As Object, e As EventArgs) Handles Btn_SeeReservation.Click
         If DataGridView1.SelectedRows.Count = 1 AndAlso roomState = "Ocupada" Then
             SeeReservationForm.ShowDialog()
@@ -38,6 +39,7 @@ Public Class ReservationPage
         End If
     End Sub
 
+    'Muestra la página de nueva reserva si hay una fila seleccioanda y pasa los valores a las variables necesarias
     Private Sub Btn_NewReservation_Click(sender As Object, e As EventArgs) Handles Btn_NewReservation.Click
         If DataGridView1.SelectedRows.Count = 1 AndAlso roomState = "Disponible" Then
             If DateTimePicker1.Value.Date = DateTimePicker2.Value.Date Or DateTimePicker1.Value.Date > DateTimePicker2.Value.Date Then
@@ -61,6 +63,8 @@ Public Class ReservationPage
 
 #Region "Other controls events region"
     ' Otros eventos de controles
+
+    'Controla que la fila ocupada contenga datos y establece el valor de las variables necesarias cuando se pulse cualquier boton
     Private Sub DataGridView1_SelectionChanged(sender As Object, e As EventArgs) Handles DataGridView1.SelectionChanged
         Try
             If DataGridView1.SelectedRows.Count > 0 Then
@@ -82,7 +86,7 @@ Public Class ReservationPage
 
     End Sub
 
-    'Function that change the color of the rows depending from the room state 
+    'Funcion que pinta las celdas dependiendo de su estado
     Private Sub DataGridView1_RowPrePaint(sender As Object, e As DataGridViewRowPrePaintEventArgs) Handles DataGridView1.RowPrePaint
         If e.RowIndex >= 0 AndAlso e.RowIndex < DataGridView1.Rows.Count Then
             Dim cell As DataGridViewCell = DataGridView1.Rows(e.RowIndex).Cells("estado")
@@ -97,13 +101,18 @@ Public Class ReservationPage
         End If
     End Sub
 
+    'Maneja la actualización del grid cuando se cambia la fecha de fin
     Private Sub DateTimePicker2_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker2.ValueChanged
-        ShowAvailableRooms(DateTimePicker1.Value.Date, DateTimePicker2.Value.Date)
+        startDate = DateTimePicker1.Value.Date
+        endDate = DateTimePicker2.Value.Date
+        ShowAvailableRooms(startDate, endDate)
     End Sub
 #End Region
 
 #Region "Main subs and functions region"
     ' Funciones y subprocedimientos principales
+
+    'Muestra las habitaciones y cambia el estado a ocupada en caso de tener una reserva en las fechas seleccionadas
     Public Sub ShowAvailableRooms(startDate As Date, endDate As Date)
         Dim query As String = "
                                 SELECT h.numero_habitacion, 

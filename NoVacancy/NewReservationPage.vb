@@ -54,16 +54,19 @@ Public Class NewReservationPage
 #End Region
 
 #Region "Button events region"
+    'Evento que llama a CreateClient
     Private Sub Btn_CreateClient_Click(sender As Object, e As EventArgs) Handles Btn_CreateClient.Click
         CreateClient()
     End Sub
-
+    'Evento que llama a CreateReservation
     Private Sub Btn_AcceptReservation_Click(sender As Object, e As EventArgs) Handles Btn_AcceptReservation.Click
         CreateReservation()
     End Sub
 #End Region
 
 #Region "Other controls events region"
+
+    'Desactiva o activa los controles en cada caso dependiendo de la selección
     Private Sub ChkBox_NewClient_CheckedChanged(sender As Object, e As EventArgs) Handles ChkBox_NewClient.CheckedChanged
         If ChkBox_NewClient.Checked Then
             For Each control As Control In Panel1.Controls
@@ -121,23 +124,26 @@ Public Class NewReservationPage
         End If
     End Sub
 
+    'Funcionalidad para que pulsando al intro desde el txtbox llame a una función
     Private Sub TxtBox_SearchClient_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtBox_SearchClient.KeyPress
         If e.KeyChar = ChrW(Keys.Enter) Then
             SearchByEmail()
         End If
     End Sub
 
+    'Funcionalidad para que pulsando al intro desde el txtbox llame a una función
     Private Sub TxtBox_Mail_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtBox_Mail.KeyPress
         If e.KeyChar = ChrW(Keys.Enter) Then
-
+            CreateClient()
         End If
     End Sub
 #End Region
 
 #Region "Main subs and functions region"
+
+    'Busca al cliente por el email
     Private Sub SearchByEmail()
         clientEmail = TxtBox_SearchClient.Text.Trim() 'Se eliminan espacios con trim
-        'Se configura la query con los datos introducidos
 
         If clientEmail IsNot Nothing Then
             Dim query As String = "SELECT * FROM Cliente WHERE email = @searchEmail"
@@ -167,6 +173,7 @@ Public Class NewReservationPage
         End If
     End Sub
 
+    'Checkea si está disponible para reservar
     Public Sub CheckIfAble()
         If ableToReserve = True Then
             Btn_AcceptReservation.Enabled = True
@@ -177,7 +184,7 @@ Public Class NewReservationPage
         End If
     End Sub
 
-
+    'Checkea el id del cliente
     Private Function CheckClientId(email As String)
         Dim clientId As Integer
         Dim query As String = "SELECT id_cliente FROM Cliente WHERE email = @searchEmail"
@@ -201,8 +208,7 @@ Public Class NewReservationPage
         Return clientId
     End Function
 
-
-
+    'Crea el cliente revisando antes el formato de los datos 
     Public Sub CreateClient()
         'Uso expresiones regulares para controlar el formato de los datos introducidos
         Dim emailPattern As String = "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b" 'Patron de mail
@@ -252,6 +258,7 @@ Public Class NewReservationPage
         End If
     End Sub
 
+    'Crea la reserva
     Public Sub CreateReservation()
         Dim clientId As Integer
 

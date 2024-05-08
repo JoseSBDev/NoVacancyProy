@@ -14,31 +14,37 @@ Public Class SeeReservationForm
     Dim previousMinus As Integer
     Dim previousPlus As Integer
     Dim productList As New List(Of Tuple(Of Integer, String))()
+    Dim resTotalPrice As Double
 
 #Region "OnLoad region"
     Private Sub EditReservationForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ShowReservation()
         FillComboBoxProducts()
         ShowReservationPrice()
+        CheckInvoiceExistence()
     End Sub
 #End Region
 
 #Region "Button events region"
+    'Llama a la función AddProductsToReservation
     Private Sub Btn_AddProducts_Click(sender As Object, e As EventArgs) Handles Btn_AddProducts.Click
         AddProductsToReservation()
     End Sub
+    'Llama a la función EditReservation
     Private Sub Btn_EditReservation_Click(sender As Object, e As EventArgs) Handles Btn_EditReservation.Click
         startDate = TxtBox_Startdate.Text
         endDate = TxtBox_Enddate.Text
         EditReservation()
     End Sub
 
+    'Llama a la función DeleteReservation
     Private Sub Btn_DeleteReservation_Click(sender As Object, e As EventArgs) Handles Btn_DeleteReservation.Click
         startDate = TxtBox_Startdate.Text
         endDate = TxtBox_Enddate.Text
         DeleteReservation()
     End Sub
 
+    'Decrementa la cantidad de productos y actualiza la lista de productos de la reserva.
     Private Sub Btn_Minus_Click(sender As Object, e As EventArgs) Handles Btn_Minus.Click
         If TxtBox_Quantity.Text IsNot Nothing AndAlso TxtBox_Quantity.Text > 0 Then
             Dim quantity As Integer = TxtBox_Quantity.Text
@@ -54,6 +60,7 @@ Public Class SeeReservationForm
         End If
     End Sub
 
+    'Aumenta la cantidad de productos y actualiza la lista de productos de la reserva.
     Private Sub Btn_Plus_Click(sender As Object, e As EventArgs) Handles Btn_Plus.Click
         If TxtBox_Quantity.Text IsNot Nothing Then
             Dim quantity As Integer = TxtBox_Quantity.Text
@@ -69,10 +76,13 @@ Public Class SeeReservationForm
         End If
     End Sub
 
+    'Finaliza la reserva y genera la factura
     Private Sub Btn_EndReservation_Click(sender As Object, e As EventArgs) Handles Btn_EndReservation.Click
+        InsertInvoice()
         InvoiceReportPage.ShowDialog()
     End Sub
 
+    'Borra los productos seleccioandos
     Private Sub Btn_DeleteProduct_Click(sender As Object, e As EventArgs) Handles Btn_DeleteProduct.Click
         If ListBox_ReservationProds.SelectedItems.Count > 0 Then
             ListBox_ReservationProds.Items.Remove(ListBox_ReservationProds.SelectedItem)
@@ -83,6 +93,7 @@ Public Class SeeReservationForm
 #End Region
 
 #Region "other control events"
+    'Habilita el botón de borrar si hay un producto seleccioando
     Private Sub ListBox_ReservationProds_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox_ReservationProds.SelectedIndexChanged
         If ListBox_ReservationProds.SelectedItem IsNot Nothing Then
             Btn_DeleteProduct.Enabled = True
@@ -90,12 +101,14 @@ Public Class SeeReservationForm
             Btn_DeleteProduct.Enabled = False
         End If
     End Sub
+    'Llama a la funcion GetProductQuantityInReservation
     Private Sub CB_Products_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_Products.SelectedIndexChanged
         GetProductQuantityInReservation(CB_Products.Text)
     End Sub
 #End Region
 
 #Region "Main subs and functions region"
+    'Función que muestra en el txtbox correspondeinte el precio de la reserva. 
     Private Sub ShowReservationPrice()
         Dim query As String = "SELECT precio_reserva FROM Reserva WHERE id_reserva = @reservationId"
         Using connection As New MySqlConnection(connectionString)
@@ -116,6 +129,8 @@ Public Class SeeReservationForm
             End Using
         End Using
     End Sub
+
+    'Función para mostrar la reserva en el grid
     Private Sub ShowReservation()
         Dim query As String = " SELECT h.numero_habitacion, 
                                 h.tipo,
@@ -141,6 +156,7 @@ Public Class SeeReservationForm
         End Using
     End Sub
 
+    'Función que rellena los textbox necesarios
     Private Sub FillTextBox()
         If DataGridView1.Rows.Count > 0 Then
             Dim firstRow As DataGridViewRow = DataGridView1.Rows(0)
@@ -152,6 +168,8 @@ Public Class SeeReservationForm
             TxtBox_Enddate.Text = endDate.ToString("yyyy-MM-dd")
         End If
     End Sub
+
+    'Función para editar la reserva si el usuario confirma el mensaje
     Private Sub EditReservation()
         Dim result As DialogResult = MessageBox.Show("¿Está seguro de que desea editar esta reserva?", "Confirmar edición", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
         If result = DialogResult.OK Then
@@ -182,30 +200,36 @@ Public Class SeeReservationForm
         End If
     End Sub
 
+    'Función para revisar la disponibilidad de la reserva editada, devuelve false si encuentra un registro, true si no
     Public Function CheckDisponibility()
         Dim avaiable As Boolean = False
         Dim query As String = " SELECT *
                                 FROM Reserva
                                 WHERE id_habitacion = @id_habitacion
-                                AND id_reserva <> @id_reserva -- Excluimos la reserva actual
-                                AND @startdate BETWEEN fecha_inicio AND fecha_fin
-                                or @enddate between fecha_inicio and fecha_fin"
+                                AND id_reserva <> @id_reserva
+                                AND (
+                                    (2024-05-01 BETWEEN fecha_inicio AND fecha_fin)
+                                    OR (2024-05-07 BETWEEN fecha_inicio AND fecha_fin)
+                                    OR (fecha_inicio BETWEEN 2024-05-01 AND 2024-05-07)  -- Nueva condición
+                                    OR (fecha_fin BETWEEN 2024-05-01 AND 2024-05-07)     -- Nueva condición
+                                );"
         Using connection As New MySqlConnection(connectionString)
-            Dim command As New MySqlCommand(query, connection)
-            command.Parameters.AddWithValue("@startdate", startDate.ToString("yyyy-MM-dd"))
-            command.Parameters.AddWithValue("@enddate", endDate.ToString("yyyy-MM-dd"))
-            command.Parameters.AddWithValue("@id_reserva", reservationId)
-            command.Parameters.AddWithValue("@id_habitacion", roomId)
+            Dim adapter As New MySqlDataAdapter(query, connection)
+            adapter.SelectCommand.Parameters.AddWithValue("@startdate", startDate.ToString("yyyy-MM-dd"))
+            adapter.SelectCommand.Parameters.AddWithValue("@enddate", endDate.ToString("yyyy-MM-dd"))
+            adapter.SelectCommand.Parameters.AddWithValue("@id_reserva", reservationId)
+            adapter.SelectCommand.Parameters.AddWithValue("@id_habitacion", roomId)
+
+            Dim dataTable As New DataTable()
+
             Try
-                connection.Open()
-                Dim reader As MySqlDataReader = command.ExecuteReader()
-                'Cuando encuentre la fila coincidente con el email (unique) devuelve el ID 
-                If reader.HasRows Then
-                    reader.Read()
+                adapter.Fill(dataTable)
+                If dataTable.Rows.Count > 0 Then
                     avaiable = False
                 Else
                     avaiable = True
                 End If
+
             Catch ex As Exception
                 MessageBox.Show("Error al editar la reserva: " & ex.Message)
             End Try
@@ -213,6 +237,7 @@ Public Class SeeReservationForm
         Return avaiable
     End Function
 
+    'Funcion para borrar la reserva
     Public Sub DeleteReservation()
         Dim result As DialogResult = MessageBox.Show("¿Está seguro de que desea eliminar esta reserva?", "Confirmar eliminación", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
         If result = DialogResult.OK Then
@@ -237,22 +262,21 @@ Public Class SeeReservationForm
         End If
     End Sub
 
+    'Funcion para rellenar el combobox con los productos disponibles (tabla producto)
     Private Sub FillComboBoxProducts()
         Dim query As String = "SELECT DISTINCT id_producto,nombre FROM Producto order by nombre"
         Using connection As New MySqlConnection(connectionString)
             Using command As New MySqlCommand(query, connection)
                 Try
                     connection.Open()
-                    ' Crea un lector de datos para obtener los resultados de la consulta
                     Dim reader As MySqlDataReader = command.ExecuteReader()
                     CB_Products.Items.Clear()
-                    ' Recorre los resultados y añade los tipos de habitación al ComboBox
+
                     While reader.Read()
                         CB_Products.Items.Add(reader("nombre").ToString())
                         productList.Add(New Tuple(Of Integer, String)(reader("id_producto"), reader("nombre").ToString()))
                     End While
 
-                    ' Cierra el lector de datos
                     reader.Close()
                     connection.Close()
                 Catch ex As Exception
@@ -262,10 +286,8 @@ Public Class SeeReservationForm
         End Using
     End Sub
 
-
-
+    'Funcion que toma la cantidad de producto en la bbdd y la marca en el txtbox correspondiente
     Private Sub GetProductQuantityInReservation(productName As String)
-        ' Construye la consulta SQL para obtener la cantidad del producto en la reserva
         Dim query As String = "SELECT p.nombre, pr.cantidad 
                                     FROM ProductosDeLaReserva pr 
                                     INNER JOIN Producto p ON pr.id_producto = p.id_producto 
@@ -290,10 +312,7 @@ Public Class SeeReservationForm
         Btn_Plus.Enabled = True
     End Sub
 
-
-
-
-
+    'Funcion para añadir los productos seleccionados a la reserva (tabla productosdelareserva)
     Private Sub AddProductsToReservation()
         Dim prevProdsPrice As Double
         Dim result As DialogResult = MessageBox.Show("Los productos se añadirán a la reserva", "Confirmar introducción", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
@@ -318,6 +337,7 @@ Public Class SeeReservationForm
                                 Dim rowsAffected As Integer = command.ExecuteNonQuery()
                                 If rowsAffected > 0 Then
                                     Console.WriteLine($"Producto {nombre} introducido en reserva {reservationId}. Cantidad: {quantity}")
+                                    ReduceInventory(id, quantity)
                                 Else
                                     MessageBox.Show("No se encontró la reserva con el ID especificado.")
                                 End If
@@ -336,8 +356,9 @@ Public Class SeeReservationForm
         End If
     End Sub
 
+    'Funcion para guardar el precio total de los productos en una variable. Devuelve el precio anterior.
     Private Function SaveProductsPrice()
-        Dim prevProdsPrice
+        Dim prevProdsPrice = 0
         Dim query As String = "SELECT p.precio as precio, pr.cantidad as cantidad, r.precio_reserva as reserva, r.id_revision as revision FROM Producto p 
                                 join productosdelareserva pr on p.id_producto = pr.id_producto 
                                 join reserva r on r.id_reserva = pr.id_reserva
@@ -374,6 +395,8 @@ Public Class SeeReservationForm
         Return prevProdsPrice
     End Function
 
+    'Funcion para calcular el precio de la reserva 
+    'Param prevProdsPrice representa el precio anterior de los productos al nuevo calculo
     Private Sub CalculateReservation(prevProdsPrice As Double)
         Dim query As String = " SELECT p.precio as precio, pr.cantidad as cantidad, r.precio_reserva as reserva, r.id_revision as revision FROM Producto p 
                                 join productosdelareserva pr on p.id_producto = pr.id_producto 
@@ -382,7 +405,6 @@ Public Class SeeReservationForm
                                 ;
                                 "
         Dim prodPrice As Double
-        Dim resTotalPrice As Double
         Dim quantity As Integer
         Dim resPrice As Double
         Dim revId As Integer
@@ -423,6 +445,7 @@ Public Class SeeReservationForm
         UpdateReservationPrice(resTotalPrice)
     End Sub
 
+    'Función para updatear el precio de la reserva en la bbdd
     Private Sub UpdateReservationPrice(resTotalPrice As Double)
         Dim query As String = "UPDATE Reserva SET precio_reserva = @reservationTotalPrice  WHERE id_reserva = @reservationId"
         Using connection As New MySqlConnection(connectionString)
@@ -440,6 +463,7 @@ Public Class SeeReservationForm
         End Using
     End Sub
 
+    'Funcion para actualizar el número de revision de la reserva
     Private Sub UpdateRevisionId()
         Dim updateQuery As String = "UPDATE Reserva SET id_revision = id_revision + 1 where id_reserva = @reservationId"
 
@@ -450,7 +474,7 @@ Public Class SeeReservationForm
                     connection.Open()
                     Dim rowsAffected As Integer = command.ExecuteNonQuery()
                     If rowsAffected > 0 Then
-                        MessageBox.Show("El valor de id_revision se ha actualizado correctamente.")
+                        Console.WriteLine("El valor de id_revision se ha actualizado correctamente.")
                     Else
                         MessageBox.Show("No se pudo actualizar el valor de id_revision.")
                     End If
@@ -460,5 +484,74 @@ Public Class SeeReservationForm
             End Using
         End Using
     End Sub
+
+    'Funcion para revisar si la reserva ya tiene factura creada
+    Private Sub CheckInvoiceExistence()
+        Dim invoiceExists As Boolean = False
+        Dim query As String = "SELECT COUNT(*) FROM Factura WHERE id_reserva = @reservationId"
+
+        Using connection As New MySqlConnection(connectionString)
+            Using command As New MySqlCommand(query, connection)
+                command.Parameters.AddWithValue("@reservationId", reservationId)
+                Try
+                    connection.Open()
+                    Dim result As Object = command.ExecuteScalar()
+
+                    If result IsNot Nothing AndAlso Convert.ToInt32(result) > 0 Then
+                        invoiceExists = True
+                    End If
+                Catch ex As Exception
+                    MessageBox.Show("Error al verificar la existencia de la factura: " & ex.Message)
+                End Try
+            End Using
+        End Using
+
+        If invoiceExists = True Then
+            Btn_EndReservation.Enabled = False
+            Btn_EndReservation.Text = "RESERVA FINALIZADA"
+        End If
+    End Sub
+    'Funcion para insertar la factura en la BBDD
+    Public Sub InsertInvoice()
+        Dim query As String = "INSERT INTO Factura (id_reserva, total, fecha_emision) VALUES (@reservation_id, @reservationPrice, @invoiceDate)"
+        Dim todayDate As Date
+        todayDate = Today
+        Try
+            Using connection As New MySqlConnection(connectionString)
+                Using command As New MySqlCommand(query, connection)
+                    connection.Open()
+                    command.Parameters.AddWithValue("@reservation_id", reservationId)
+                    command.Parameters.AddWithValue("@invoiceDate", todayDate.ToString("yyyy-MM-dd"))
+                    command.Parameters.AddWithValue("@reservationPrice", Double.Parse(TxtBox_TotalAmount.Text))
+
+                    command.ExecuteNonQuery()
+                End Using
+            End Using
+
+        Catch ex As Exception
+            MessageBox.Show("Error al generar el informe: " & ex.Message)
+        End Try
+    End Sub
+
+    'Reduce el inventario respecto a los productos añadidos a la reserva
+    Private Sub ReduceInventory(id As Integer, quantity As Integer)
+        Dim query As String = "UPDATE Inventario SET cantidad = cantidad - @quantity WHERE id_producto = @id"
+
+        Using connection As New MySqlConnection(connectionString)
+            Using command As New MySqlCommand(query, connection)
+                command.Parameters.AddWithValue("@id", id)
+                command.Parameters.AddWithValue("@quantity", quantity)
+
+                Try
+                    connection.Open()
+                    command.ExecuteNonQuery()
+                    'MsgBox("Cantidad reducida en el inventario.")
+                Catch ex As Exception
+                    MsgBox("Error al reducir la cantidad en el inventario: " & ex.Message)
+                End Try
+            End Using
+        End Using
+    End Sub
+
 #End Region
 End Class

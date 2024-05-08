@@ -25,15 +25,24 @@ Public Class CleaningServicesPage
 
 #Region "Button events region"
     ' Eventos de clic en botones
+
+    'Llama a la funcion UpdateCleaningRegistry
     Private Sub Btn_EditMaintenance_Click(sender As Object, e As EventArgs) Handles Btn_EditMaintenance.Click
         If TxtBox_Description.Text IsNot Nothing Then
-            UpdateMaintenanceRegistry()
+            UpdateCleaningRegistry()
         End If
     End Sub
 #End Region
 
 #Region "Other controls events region"
     ' Otros eventos de controles
+
+    'Maneja la variable incidentState cuando es cambiada en el combobox
+    Private Sub CB_State_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_State.SelectedIndexChanged
+        incidentState = CB_State.SelectedItem
+    End Sub
+
+    'Rellena los txtbox de la incidencia seleccionada
     Private Sub DataGridView1_SelectionChanged(sender As Object, e As EventArgs) Handles DataGridView1.SelectionChanged
         Try
             If DataGridView1.SelectedRows.Count > 0 Then
@@ -54,7 +63,7 @@ Public Class CleaningServicesPage
             MessageBox.Show("Seleccione una fila con datos.")
         End Try
     End Sub
-    'Function that change the color of the rows depending from the room state 
+    'Function que cambia el color de la fila dependiendo de su estado
     Private Sub DataGridView1_RowPrePaint(sender As Object, e As DataGridViewRowPrePaintEventArgs) Handles DataGridView1.RowPrePaint
         If e.RowIndex >= 0 AndAlso e.RowIndex < DataGridView1.Rows.Count Then
             Dim cell As DataGridViewCell = DataGridView1.Rows(e.RowIndex).Cells("estado")
@@ -74,6 +83,8 @@ Public Class CleaningServicesPage
 
 #Region "Main subs and functions region"
     ' Funciones y subprocedimientos principales
+
+    'Funcion que rellena el grid con las incidencias de limpieza
     Private Sub ShowCleaningIncidents()
         Dim query As String = "SELECT 
                                 h.numero_habitacion, 
@@ -99,6 +110,8 @@ Public Class CleaningServicesPage
             End If
         End Using
     End Sub
+
+    'Cambia la selección del combobox dependiendo del estado de la incidencia
     Private Sub SelectComboBox()
         Select Case incidentState
             Case "Completada"
@@ -109,7 +122,9 @@ Public Class CleaningServicesPage
                 CB_State.SelectedIndex = 2
         End Select
     End Sub
-    Private Sub UpdateMaintenanceRegistry()
+
+    'Actauliza la bbdd ed limpieza
+    Private Sub UpdateCleaningRegistry()
         Dim result As DialogResult = MessageBox.Show("¿Está seguro de que desea editar esta incidencia?", "Confirmar edición", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
         If result = DialogResult.OK Then
             cleaningDate = DateTimePicker1.Value
@@ -137,5 +152,6 @@ Public Class CleaningServicesPage
             Me.Close()
         End If
     End Sub
+
 #End Region
 End Class

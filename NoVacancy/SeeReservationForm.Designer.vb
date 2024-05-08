@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class SeeReservationForm
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class SeeReservationForm
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -141,7 +141,7 @@ Partial Class SeeReservationForm
         Me.Btn_EditReservation.Font = New System.Drawing.Font("MS Reference Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Btn_EditReservation.ForeColor = System.Drawing.SystemColors.WindowFrame
         Me.Btn_EditReservation.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.Btn_EditReservation.Location = New System.Drawing.Point(13, 506)
+        Me.Btn_EditReservation.Location = New System.Drawing.Point(6, 558)
         Me.Btn_EditReservation.Margin = New System.Windows.Forms.Padding(4)
         Me.Btn_EditReservation.Name = "Btn_EditReservation"
         Me.Btn_EditReservation.Size = New System.Drawing.Size(263, 80)
@@ -157,7 +157,7 @@ Partial Class SeeReservationForm
         Me.Btn_DeleteReservation.Font = New System.Drawing.Font("MS Reference Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Btn_DeleteReservation.ForeColor = System.Drawing.SystemColors.WindowFrame
         Me.Btn_DeleteReservation.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.Btn_DeleteReservation.Location = New System.Drawing.Point(541, 506)
+        Me.Btn_DeleteReservation.Location = New System.Drawing.Point(565, 561)
         Me.Btn_DeleteReservation.Margin = New System.Windows.Forms.Padding(4)
         Me.Btn_DeleteReservation.Name = "Btn_DeleteReservation"
         Me.Btn_DeleteReservation.Size = New System.Drawing.Size(263, 80)
@@ -249,7 +249,7 @@ Partial Class SeeReservationForm
         Me.Btn_EndReservation.Font = New System.Drawing.Font("MS Reference Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Btn_EndReservation.ForeColor = System.Drawing.SystemColors.WindowFrame
         Me.Btn_EndReservation.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.Btn_EndReservation.Location = New System.Drawing.Point(19, 371)
+        Me.Btn_EndReservation.Location = New System.Drawing.Point(6, 440)
         Me.Btn_EndReservation.Margin = New System.Windows.Forms.Padding(4)
         Me.Btn_EndReservation.Name = "Btn_EndReservation"
         Me.Btn_EndReservation.Size = New System.Drawing.Size(263, 80)
@@ -265,7 +265,7 @@ Partial Class SeeReservationForm
         Me.Btn_AddProducts.Font = New System.Drawing.Font("MS Reference Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Btn_AddProducts.ForeColor = System.Drawing.SystemColors.WindowFrame
         Me.Btn_AddProducts.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.Btn_AddProducts.Location = New System.Drawing.Point(440, 371)
+        Me.Btn_AddProducts.Location = New System.Drawing.Point(419, 371)
         Me.Btn_AddProducts.Margin = New System.Windows.Forms.Padding(4)
         Me.Btn_AddProducts.Name = "Btn_AddProducts"
         Me.Btn_AddProducts.Size = New System.Drawing.Size(171, 48)
@@ -277,7 +277,7 @@ Partial Class SeeReservationForm
         '
         Me.TxtBox_TotalAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtBox_TotalAmount.ForeColor = System.Drawing.Color.Red
-        Me.TxtBox_TotalAmount.Location = New System.Drawing.Point(283, 495)
+        Me.TxtBox_TotalAmount.Location = New System.Drawing.Point(288, 511)
         Me.TxtBox_TotalAmount.Name = "TxtBox_TotalAmount"
         Me.TxtBox_TotalAmount.Size = New System.Drawing.Size(251, 61)
         Me.TxtBox_TotalAmount.TabIndex = 27
@@ -286,7 +286,7 @@ Partial Class SeeReservationForm
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(301, 468)
+        Me.Label7.Location = New System.Drawing.Point(306, 484)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(137, 24)
         Me.Label7.TabIndex = 28
@@ -301,7 +301,7 @@ Partial Class SeeReservationForm
         Me.Btn_DeleteProduct.Font = New System.Drawing.Font("MS Reference Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Btn_DeleteProduct.ForeColor = System.Drawing.SystemColors.WindowFrame
         Me.Btn_DeleteProduct.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.Btn_DeleteProduct.Location = New System.Drawing.Point(633, 371)
+        Me.Btn_DeleteProduct.Location = New System.Drawing.Point(648, 371)
         Me.Btn_DeleteProduct.Margin = New System.Windows.Forms.Padding(4)
         Me.Btn_DeleteProduct.Name = "Btn_DeleteProduct"
         Me.Btn_DeleteProduct.Size = New System.Drawing.Size(171, 48)
@@ -314,7 +314,7 @@ Partial Class SeeReservationForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Window
-        Me.ClientSize = New System.Drawing.Size(817, 599)
+        Me.ClientSize = New System.Drawing.Size(841, 654)
         Me.Controls.Add(Me.Btn_DeleteProduct)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.TxtBox_TotalAmount)

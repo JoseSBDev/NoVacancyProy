@@ -38,7 +38,6 @@ Partial Class RoomsPage
         Me.DataGridViewRooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewRooms.Location = New System.Drawing.Point(287, 194)
         Me.DataGridViewRooms.Name = "DataGridViewRooms"
-        Me.DataGridViewRooms.ReadOnly = True
         Me.DataGridViewRooms.RowHeadersWidth = 51
         Me.DataGridViewRooms.RowTemplate.Height = 24
         Me.DataGridViewRooms.Size = New System.Drawing.Size(717, 422)
@@ -105,13 +104,14 @@ Partial Class RoomsPage
         Me.Btn_UpdateRooms.AccessibleRole = System.Windows.Forms.AccessibleRole.None
         Me.Btn_UpdateRooms.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Btn_UpdateRooms.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.Btn_UpdateRooms.Enabled = False
-        Me.Btn_UpdateRooms.Font = New System.Drawing.Font("MS Reference Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Btn_UpdateRooms.Font = New System.Drawing.Font("MS Reference Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Btn_UpdateRooms.ForeColor = System.Drawing.SystemColors.WindowFrame
-        Me.Btn_UpdateRooms.Location = New System.Drawing.Point(24, 516)
+        Me.Btn_UpdateRooms.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
+        Me.Btn_UpdateRooms.Location = New System.Drawing.Point(13, 523)
+        Me.Btn_UpdateRooms.Margin = New System.Windows.Forms.Padding(4)
         Me.Btn_UpdateRooms.Name = "Btn_UpdateRooms"
-        Me.Btn_UpdateRooms.Size = New System.Drawing.Size(197, 65)
-        Me.Btn_UpdateRooms.TabIndex = 7
+        Me.Btn_UpdateRooms.Size = New System.Drawing.Size(263, 80)
+        Me.Btn_UpdateRooms.TabIndex = 8
         Me.Btn_UpdateRooms.Text = "Actualizar"
         Me.Btn_UpdateRooms.UseVisualStyleBackColor = False
         '
