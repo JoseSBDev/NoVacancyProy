@@ -158,6 +158,7 @@ Partial Class CleaningServicesPage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.Window
         Me.ClientSize = New System.Drawing.Size(939, 517)
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.Label5)
@@ -171,8 +172,12 @@ Partial Class CleaningServicesPage
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TxtBox_Room)
         Me.Controls.Add(Me.DataGridView1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "CleaningServicesPage"
-        Me.Text = "CleaningServicesPage"
+        Me.Text = "Panel de servicio de limpieza"
+        Me.TopMost = True
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

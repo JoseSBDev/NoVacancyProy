@@ -7,15 +7,32 @@ Public Class IncidentPage
     Dim pwd = "root"
     Dim database = "hotel"
     Dim connectionString = "server=" & server & ";user=" & user & ";password=" & pwd & ";database=" & database
-
     Dim roomsId As New Dictionary(Of String, Integer)()
-    Private Sub IncidentPAge_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+#Region "onLoad region"
+    Private Sub IncidentPage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CB_Type.Items.Add("Mantenimiento")
         CB_Type.Items.Add("Limpieza")
 
         FillRoomComboBox()
     End Sub
+#End Region
 
+#Region "Button events region"
+    ' Eventos de clic en botones
+
+    'Llama a create incident
+    Private Sub Btn_CreateIncident_Click(sender As Object, e As EventArgs) Handles Btn_CreateIncident.Click
+        CreateIncident()
+    End Sub
+#End Region
+
+#Region "Other controls events region"
+    ' Otros eventos de controles
+#End Region
+
+#Region "Main subs and functions region"
+    ' Funciones y subprocedimientos principales
     Public Sub FillRoomComboBox()
         Dim query As String = "SELECT numero_habitacion FROM Habitacion"
         Dim id = 1
@@ -32,29 +49,27 @@ Public Class IncidentPage
         End Using
     End Sub
 
-    Private Sub Btn_CreateIncident_Click(sender As Object, e As EventArgs) Handles Btn_CreateIncident.Click
-        ' Obtener el número de habitación seleccionado
+    Private Sub CreateIncident()
         Dim selectedRoomNumber As String = CB_Room.SelectedItem.ToString()
-
-        ' Obtener el ID de la habitación seleccionada del diccionario
         Dim roomId As Integer = -1
         If roomsId.ContainsKey(selectedRoomNumber) Then
             roomId = roomsId(selectedRoomNumber)
         End If
 
-        ' Verificar si se seleccionó una habitación válida
+        'Verificar si se seleccionó una habitación válida
         If roomId <> -1 Then
-            ' Obtener los otros datos necesarios del incidente
             Dim incidentType As String = CB_Type.Text
             Dim description As String = RTB_Description.Text
+            Dim today As Date = Now
 
-            ' Insertar la incidencia en la base de datos
-            Dim query As String = "INSERT INTO incidencia(id_habitacion, tipo, descripcion) VALUES (@roomId, @incidentType, @description)"
+            Dim query As String = $"INSERT INTO {incidentType}(id_habitacion, descripcion, fecha) VALUES (@roomId, @description, @date)"
+
             Using connection As New MySqlConnection(connectionString)
                 Dim command As New MySqlCommand(query, connection)
                 command.Parameters.AddWithValue("@roomId", roomId)
-                command.Parameters.AddWithValue("@incidentType", incidentType)
+                'command.Parameters.AddWithValue("@incidentType", incidentType)
                 command.Parameters.AddWithValue("@description", description)
+                command.Parameters.AddWithValue("@date", today.ToString("yyyy-MM-dd"))
                 connection.Open()
                 command.ExecuteNonQuery()
             End Using
@@ -64,4 +79,5 @@ Public Class IncidentPage
             MessageBox.Show("Seleccione una habitación válida.")
         End If
     End Sub
+#End Region
 End Class

@@ -36,11 +36,11 @@ Partial Class RoomsPage
         'DataGridViewRooms
         '
         Me.DataGridViewRooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewRooms.Location = New System.Drawing.Point(348, 194)
+        Me.DataGridViewRooms.Location = New System.Drawing.Point(287, 194)
         Me.DataGridViewRooms.Name = "DataGridViewRooms"
         Me.DataGridViewRooms.RowHeadersWidth = 51
         Me.DataGridViewRooms.RowTemplate.Height = 24
-        Me.DataGridViewRooms.Size = New System.Drawing.Size(656, 422)
+        Me.DataGridViewRooms.Size = New System.Drawing.Size(717, 422)
         Me.DataGridViewRooms.TabIndex = 0
         '
         'ComboBoxRoomStat
@@ -55,7 +55,7 @@ Partial Class RoomsPage
         'TextBoxRoomNumber
         '
         Me.TextBoxRoomNumber.BackColor = System.Drawing.SystemColors.InactiveCaption
-        Me.TextBoxRoomNumber.Location = New System.Drawing.Point(263, 59)
+        Me.TextBoxRoomNumber.Location = New System.Drawing.Point(241, 59)
         Me.TextBoxRoomNumber.Name = "TextBoxRoomNumber"
         Me.TextBoxRoomNumber.Size = New System.Drawing.Size(47, 22)
         Me.TextBoxRoomNumber.TabIndex = 2
@@ -73,7 +73,7 @@ Partial Class RoomsPage
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(92, 57)
+        Me.Label1.Location = New System.Drawing.Point(56, 57)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(165, 24)
         Me.Label1.TabIndex = 4
@@ -104,13 +104,14 @@ Partial Class RoomsPage
         Me.Btn_UpdateRooms.AccessibleRole = System.Windows.Forms.AccessibleRole.None
         Me.Btn_UpdateRooms.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Btn_UpdateRooms.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.Btn_UpdateRooms.Enabled = False
-        Me.Btn_UpdateRooms.Font = New System.Drawing.Font("MS Reference Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Btn_UpdateRooms.Font = New System.Drawing.Font("MS Reference Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Btn_UpdateRooms.ForeColor = System.Drawing.SystemColors.WindowFrame
-        Me.Btn_UpdateRooms.Location = New System.Drawing.Point(60, 551)
+        Me.Btn_UpdateRooms.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
+        Me.Btn_UpdateRooms.Location = New System.Drawing.Point(13, 523)
+        Me.Btn_UpdateRooms.Margin = New System.Windows.Forms.Padding(4)
         Me.Btn_UpdateRooms.Name = "Btn_UpdateRooms"
-        Me.Btn_UpdateRooms.Size = New System.Drawing.Size(197, 65)
-        Me.Btn_UpdateRooms.TabIndex = 7
+        Me.Btn_UpdateRooms.Size = New System.Drawing.Size(263, 80)
+        Me.Btn_UpdateRooms.TabIndex = 8
         Me.Btn_UpdateRooms.Text = "Actualizar"
         Me.Btn_UpdateRooms.UseVisualStyleBackColor = False
         '
@@ -128,10 +129,11 @@ Partial Class RoomsPage
         Me.Controls.Add(Me.TextBoxRoomNumber)
         Me.Controls.Add(Me.ComboBoxRoomStat)
         Me.Controls.Add(Me.DataGridViewRooms)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "RoomsPage"
-        Me.Text = "RoomsPage"
+        Me.Text = "Habitaciones"
         Me.TopMost = True
         CType(Me.DataGridViewRooms, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

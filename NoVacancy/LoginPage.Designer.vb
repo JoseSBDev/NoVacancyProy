@@ -22,6 +22,7 @@ Partial Class LoginPage
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(LoginPage))
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.txtUsername = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -34,7 +35,7 @@ Partial Class LoginPage
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.NoVacancy.My.Resources.Resources.Black_Gold_Simple_Modern_Villa___Homestay_Logo
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
         Me.PictureBox1.Location = New System.Drawing.Point(-3, 12)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(645, 471)
