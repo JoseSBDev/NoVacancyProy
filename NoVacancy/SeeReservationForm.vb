@@ -9,12 +9,14 @@ Public Class SeeReservationForm
     Public reservationId As Integer
     Dim startDate As Date
     Dim endDate As Date
+    Dim newEndDate As Date
     Public roomId As Integer
     Dim globalProduct As String
     Dim previousMinus As Integer
     Dim previousPlus As Integer
     Dim productList As New List(Of Tuple(Of Integer, String))()
     Dim resTotalPrice As Double
+    Dim nightPrice As Double
 
 #Region "OnLoad region"
     Private Sub EditReservationForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -33,14 +35,12 @@ Public Class SeeReservationForm
     'Llama a la función EditReservation
     Private Sub Btn_EditReservation_Click(sender As Object, e As EventArgs) Handles Btn_EditReservation.Click
         startDate = TxtBox_Startdate.Text
-        endDate = TxtBox_Enddate.Text
+        newEndDate = TxtBox_Enddate.Text
         EditReservation()
     End Sub
 
     'Llama a la función DeleteReservation
     Private Sub Btn_DeleteReservation_Click(sender As Object, e As EventArgs) Handles Btn_DeleteReservation.Click
-        startDate = TxtBox_Startdate.Text
-        endDate = TxtBox_Enddate.Text
         DeleteReservation()
     End Sub
 
@@ -166,6 +166,8 @@ Public Class SeeReservationForm
             TxtBox_Startdate.Text = startDate.ToString("yyyy-MM-dd")
             endDate = firstRow.Cells("fecha_fin").Value
             TxtBox_Enddate.Text = endDate.ToString("yyyy-MM-dd")
+            nightPrice = Convert.ToDouble(firstRow.Cells("precio").Value)
+
         End If
     End Sub
 
@@ -174,16 +176,19 @@ Public Class SeeReservationForm
         Dim result As DialogResult = MessageBox.Show("¿Está seguro de que desea editar esta reserva?", "Confirmar edición", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
         If result = DialogResult.OK Then
             Dim query As String = " UPDATE Reserva
-                                    SET fecha_inicio = @startdate, fecha_fin = @enddate
+                                    SET fecha_inicio = @startdate, fecha_fin = @enddate, precio_reserva = precio_reserva + @sumDays
                                     WHERE id_reserva = @id_reserva
                                     AND id_habitacion = @id_habitacion
                                     "
             Using connection As New MySqlConnection(connectionString)
                 Using command As New MySqlCommand(query, connection)
                     command.Parameters.AddWithValue("@startdate", startDate.ToString("yyyy-MM-dd"))
-                    command.Parameters.AddWithValue("@enddate", endDate.ToString("yyyy-MM-dd"))
+                    command.Parameters.AddWithValue("@enddate", newEndDate.ToString("yyyy-MM-dd"))
                     command.Parameters.AddWithValue("@id_reserva", reservationId)
                     command.Parameters.AddWithValue("@id_habitacion", roomId)
+                    Dim daysDiff As Double = newEndDate.Day - endDate.Day
+                    Dim addAmount = daysDiff * nightPrice
+                    command.Parameters.AddWithValue("@sumDays", addAmount)
                     Try
                         connection.Open()
                         If CheckDisponibility() = True Then
