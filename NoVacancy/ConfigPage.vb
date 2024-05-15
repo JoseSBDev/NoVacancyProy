@@ -215,9 +215,6 @@ Public Class ConfigPage
 
     'Inserta los datos introducidos en los txtbox para añadir un nuevo usuario
     Private Sub NewUser()
-        TxtBox_Name.Text = userName
-        TxtBox_Password.Text = userPass
-        TxtBox_Email.Text = userMail
 
         Dim query As String = "INSERT INTO Usuario (nombre, email, contrasena, id_rol) VALUES (@nombre, @email, @contrasena, @id_rol)"
         Using connection As New MySqlConnection(connectionString)
@@ -232,6 +229,9 @@ Public Class ConfigPage
 
                     If rowsAffected > 0 Then
                         MessageBox.Show("Usuario insertado correctamente.")
+                        TxtBox_Name.Text = userName
+                        TxtBox_Password.Text = userPass
+                        TxtBox_Email.Text = userMail
                     Else
                         MessageBox.Show("No se pudo insertar el usuario.")
                     End If
