@@ -104,7 +104,7 @@ Public Class ConfigPage
             RoomsPage.BackColor = SystemColors.WindowFrame
             CleaningServicesPage.BackColor = SystemColors.WindowFrame
             Me.BackColor = SystemColors.WindowFrame
-            SeeReservationForm.BackColor = SystemColors.WindowFrame
+            SeeReservationPage.BackColor = SystemColors.WindowFrame
             IncidentPage.BackColor = SystemColors.WindowFrame
             LoginPage.BackColor = SystemColors.WindowFrame
             MainPage.BackColor = SystemColors.WindowFrame
@@ -117,7 +117,7 @@ Public Class ConfigPage
             RoomsPage.BackColor = SystemColors.Window
             CleaningServicesPage.BackColor = SystemColors.Window
             Me.BackColor = SystemColors.Window
-            SeeReservationForm.BackColor = SystemColors.Window
+            SeeReservationPage.BackColor = SystemColors.Window
             IncidentPage.BackColor = SystemColors.Window
             LoginPage.BackColor = SystemColors.Window
             MainPage.BackColor = SystemColors.Window
@@ -218,7 +218,6 @@ Public Class ConfigPage
         TxtBox_Name.Text = userName
         TxtBox_Password.Text = userPass
         TxtBox_Email.Text = userMail
-        CheckedListBox_Roles.SetItemChecked(userRole - 1, True)
 
         Dim query As String = "INSERT INTO Usuario (nombre, email, contrasena, id_rol) VALUES (@nombre, @email, @contrasena, @id_rol)"
         Using connection As New MySqlConnection(connectionString)
@@ -226,7 +225,7 @@ Public Class ConfigPage
                 command.Parameters.AddWithValue("@nombre", TxtBox_Name.Text)
                 command.Parameters.AddWithValue("@email", TxtBox_Email.Text)
                 command.Parameters.AddWithValue("@contrasena", TxtBox_Password.Text)
-                command.Parameters.AddWithValue("@id_rol", CheckedListBox_Roles.SelectedItem + 1)
+                command.Parameters.AddWithValue("@id_rol", CheckedListBox_Roles.SelectedIndex + 1)
                 Try
                     connection.Open()
                     Dim rowsAffected As Integer = command.ExecuteNonQuery()

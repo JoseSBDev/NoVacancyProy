@@ -1,6 +1,6 @@
 ﻿Imports MySqlConnector
 
-Public Class SeeReservationForm
+Public Class SeeReservationPage
     Dim server = "localhost"
     Dim user = "root"
     Dim pwd = "root"
@@ -80,6 +80,7 @@ Public Class SeeReservationForm
     Private Sub Btn_EndReservation_Click(sender As Object, e As EventArgs) Handles Btn_EndReservation.Click
         InsertInvoice()
         InvoiceReportPage.ShowDialog()
+        Me.Close()
     End Sub
 
     'Borra los productos seleccioandos
@@ -514,6 +515,9 @@ Public Class SeeReservationForm
         If invoiceExists = True Then
             Btn_EndReservation.Enabled = False
             Btn_EndReservation.Text = "RESERVA FINALIZADA"
+        Else
+            Btn_EndReservation.Enabled = True
+            Btn_EndReservation.Text = "FINALIZAR RESERVA"
         End If
     End Sub
     'Funcion para insertar la factura en la BBDD

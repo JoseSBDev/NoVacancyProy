@@ -125,7 +125,7 @@ Public Class MainPage
                 RoomsPage.DataGridViewRooms.ReadOnly = False
             Case "Recepcion"
                 Btn_Cleaning.Enabled = False
-                Btn_Config.Enabled = True
+                Btn_Config.Enabled = False
                 Btn_Incident.Enabled = True
                 Btn_Reservations.Enabled = True
                 Btn_Maintenance.Enabled = False
