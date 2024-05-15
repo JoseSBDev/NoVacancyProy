@@ -31,7 +31,7 @@ CREATE TABLE Habitacion (
 CREATE TABLE Cliente (
     id_cliente INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100),
-    telefono VARCHAR(20),
+    telefono INT,
     email VARCHAR(100) unique
 );
 
@@ -79,7 +79,7 @@ CREATE TABLE Limpieza (
     id_habitacion INT,
     fecha DATE,
     descripcion VARCHAR(255),
-    estado VARCHAR(50),
+    estado VARCHAR(50) default 'En espera',
     FOREIGN KEY (id_habitacion) REFERENCES Habitacion(id_habitacion)
 );
 

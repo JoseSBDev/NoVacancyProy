@@ -63,7 +63,7 @@ INSERT INTO hotel.rol(id_rol, nombre) VALUES
 INSERT INTO hotel.usuario(nombre, email, contrasena, id_rol) VALUES 
 ('IT', 'IT@hotelimperium.com', 'admin', 1),
 ('Gerencia', 'gerencia@hotelimperium.com', 'admin', 2),
-('Repecion', 'recepcion@hotelimperium.com', 'admin', 3),
+('Recepcion', 'recepcion@hotelimperium.com', 'admin', 3),
 ('Limpieza', 'limpieza@hotelimperium.com', 'admin', 4),
 ('Mantenimiento', 'mantenimiento@hotelimperium.com', 'admin', 5);
 
