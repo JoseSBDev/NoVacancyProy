@@ -32,7 +32,7 @@ Public Class ReservationPage
     'Muestra la página de la reserva en caso de estar seleccionada una fila de una reserva ocupada
     Private Sub Btn_SeeReservation_Click(sender As Object, e As EventArgs) Handles Btn_SeeReservation.Click
         If DataGridView1.SelectedRows.Count = 1 AndAlso roomState = "Ocupada" Then
-            SeeReservationForm.ShowDialog()
+            SeeReservationPage.ShowDialog()
             ShowAvailableRooms(startDate, endDate)
         Else
             MsgBox("Debes seleccionar una fila con habitación ocupada para poder editar una reserva.")
@@ -76,8 +76,8 @@ Public Class ReservationPage
                 roomid = Convert.ToInt32(selectedRow.Cells("id_habitacion").Value)
                 If selectedRow IsNot Nothing AndAlso roomState = "Ocupada" Then
                     reservationID = Convert.ToInt32(selectedRow.Cells("id_reserva").Value)
-                    SeeReservationForm.reservationId = reservationID
-                    SeeReservationForm.roomId = roomid
+                    SeeReservationPage.reservationId = reservationID
+                    SeeReservationPage.roomId = roomid
                 End If
             End If
         Catch ex As Exception

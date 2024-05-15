@@ -152,10 +152,10 @@
     <Compile Include="InvoiceReportPage.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SeeReservationForm.Designer.vb">
-      <DependentUpon>SeeReservationForm.vb</DependentUpon>
+    <Compile Include="SeeReservationPage.Designer.vb">
+      <DependentUpon>SeeReservationPage.vb</DependentUpon>
     </Compile>
-    <Compile Include="SeeReservationForm.vb">
+    <Compile Include="SeeReservationPage.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="IncidentPage.Designer.vb">
@@ -234,8 +234,8 @@
     <EmbeddedResource Include="InvoiceReportPage.resx">
       <DependentUpon>InvoiceReportPage.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SeeReservationForm.resx">
-      <DependentUpon>SeeReservationForm.vb</DependentUpon>
+    <EmbeddedResource Include="SeeReservationPage.resx">
+      <DependentUpon>SeeReservationPage.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IncidentPage.resx">
       <DependentUpon>IncidentPage.vb</DependentUpon>

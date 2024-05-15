@@ -7,17 +7,17 @@ Public Class InvoiceReportPage
     Dim pwd = "root"
     Dim database = "hotel"
     Dim connectionString = "server=" & server & ";user=" & user & ";password=" & pwd & ";database=" & database
-    Dim reservationId = SeeReservationForm.reservationId
+    Dim reservationId = SeeReservationPage.reservationId
 
 #Region "onLoad"
     Private Sub InvoiceReportPage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        GenerateProductReport()
+        GenerateInvoice()
     End Sub
 #End Region
 
 #Region "main functions"
     'Funcion para recuperar los datos necesarios para la factura 
-    Public Sub GenerateProductReport()
+    Public Sub GenerateInvoice()
         Dim query As String = "SELECT 
                                     c.nombre AS nombre, 
                                     c.telefono AS telefono, 
