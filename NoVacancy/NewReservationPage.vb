@@ -184,8 +184,8 @@ Public Class NewReservationPage
         End If
     End Sub
 
-    'Checkea el id del cliente
-    Private Function CheckClientId(email As String)
+    'Checkea el mail del cliente
+    Private Function CheckClientMail(email As String)
         Dim clientId As Integer
         Dim query As String = "SELECT id_cliente FROM Cliente WHERE email = @searchEmail"
         Using connection As New MySqlConnection(connectionString)
@@ -263,7 +263,7 @@ Public Class NewReservationPage
         Dim clientId As Integer
 
         If ableToReserve = True Then
-            clientId = CheckClientId(clientEmail)
+            clientId = CheckClientMail(clientEmail)
             Dim insert As String = "INSERT INTO Reserva (id_cliente, id_habitacion, fecha_inicio, fecha_fin, precio_reserva) VALUES (@id_cliente, @id_habitacion, @startdate, @enddate, @reservationPrice)"
             Using connection As New MySqlConnection(connectionString)
                 Dim command As New MySqlCommand(insert, connection)

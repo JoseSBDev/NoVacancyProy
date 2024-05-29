@@ -22,10 +22,10 @@ Partial Class ConfigPage
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Title2 As System.Windows.Forms.DataVisualization.Charting.Title = New System.Windows.Forms.DataVisualization.Charting.Title()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Title1 As System.Windows.Forms.DataVisualization.Charting.Title = New System.Windows.Forms.DataVisualization.Charting.Title()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ConfigPage))
         Me.ListBox_Users = New System.Windows.Forms.ListBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -112,7 +112,7 @@ Partial Class ConfigPage
         Me.TxtBox_Email.Location = New System.Drawing.Point(26, 161)
         Me.TxtBox_Email.Name = "TxtBox_Email"
         Me.TxtBox_Email.Size = New System.Drawing.Size(183, 22)
-        Me.TxtBox_Email.TabIndex = 17
+        Me.TxtBox_Email.TabIndex = 2
         '
         'Label4
         '
@@ -132,7 +132,7 @@ Partial Class ConfigPage
         Me.CheckedListBox_Roles.MultiColumn = True
         Me.CheckedListBox_Roles.Name = "CheckedListBox_Roles"
         Me.CheckedListBox_Roles.Size = New System.Drawing.Size(183, 140)
-        Me.CheckedListBox_Roles.TabIndex = 15
+        Me.CheckedListBox_Roles.TabIndex = 3
         '
         'Label3
         '
@@ -148,7 +148,7 @@ Partial Class ConfigPage
         Me.TxtBox_Password.Location = New System.Drawing.Point(26, 93)
         Me.TxtBox_Password.Name = "TxtBox_Password"
         Me.TxtBox_Password.Size = New System.Drawing.Size(183, 22)
-        Me.TxtBox_Password.TabIndex = 13
+        Me.TxtBox_Password.TabIndex = 1
         '
         'Label2
         '
@@ -185,23 +185,23 @@ Partial Class ConfigPage
         '
         'Chart1
         '
-        ChartArea2.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend2)
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
         Me.Chart1.Location = New System.Drawing.Point(597, 72)
         Me.Chart1.Name = "Chart1"
-        Series2.ChartArea = "ChartArea1"
-        Series2.Legend = "Legend1"
-        Series2.Name = "Series1"
-        Me.Chart1.Series.Add(Series2)
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.Chart1.Series.Add(Series1)
         Me.Chart1.Size = New System.Drawing.Size(527, 437)
         Me.Chart1.TabIndex = 13
         Me.Chart1.Text = "Chart1"
-        Title2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Title2.Name = "Title1"
-        Title2.Text = "VENTAS 2024"
-        Me.Chart1.Titles.Add(Title2)
+        Title1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Title1.Name = "Title1"
+        Title1.Text = "VENTAS 2024"
+        Me.Chart1.Titles.Add(Title1)
         '
         'PB_DayMode
         '

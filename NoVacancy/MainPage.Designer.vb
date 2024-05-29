@@ -36,6 +36,7 @@ Partial Class MainPage
         Me.PB_ChangeUser = New System.Windows.Forms.PictureBox()
         Me.PB_Weather = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.LblRoleName = New System.Windows.Forms.Label()
         CType(Me.PB_ChangeUser, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PB_Weather, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -108,7 +109,7 @@ Partial Class MainPage
         Me.Btn_exit.Font = New System.Drawing.Font("MS Reference Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Btn_exit.ForeColor = System.Drawing.SystemColors.WindowFrame
         Me.Btn_exit.ImageAlign = System.Drawing.ContentAlignment.BottomRight
-        Me.Btn_exit.Location = New System.Drawing.Point(844, 575)
+        Me.Btn_exit.Location = New System.Drawing.Point(844, 570)
         Me.Btn_exit.Name = "Btn_exit"
         Me.Btn_exit.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Btn_exit.Size = New System.Drawing.Size(237, 65)
@@ -120,11 +121,11 @@ Partial Class MainPage
         '
         Me.LblWelcome.AutoSize = True
         Me.LblWelcome.Font = New System.Drawing.Font("MS Reference Sans Serif", 28.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblWelcome.Location = New System.Drawing.Point(113, 12)
+        Me.LblWelcome.Location = New System.Drawing.Point(116, 5)
         Me.LblWelcome.Name = "LblWelcome"
-        Me.LblWelcome.Size = New System.Drawing.Size(317, 60)
+        Me.LblWelcome.Size = New System.Drawing.Size(299, 60)
         Me.LblWelcome.TabIndex = 10
-        Me.LblWelcome.Text = "Bienvenido "
+        Me.LblWelcome.Text = "Bienvenido"
         '
         'Btn_Maintenance
         '
@@ -166,7 +167,7 @@ Partial Class MainPage
         Me.Btn_Incident.Font = New System.Drawing.Font("MS Reference Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Btn_Incident.ForeColor = System.Drawing.SystemColors.WindowFrame
         Me.Btn_Incident.ImageAlign = System.Drawing.ContentAlignment.BottomRight
-        Me.Btn_Incident.Location = New System.Drawing.Point(844, 367)
+        Me.Btn_Incident.Location = New System.Drawing.Point(844, 377)
         Me.Btn_Incident.Name = "Btn_Incident"
         Me.Btn_Incident.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Btn_Incident.Size = New System.Drawing.Size(237, 65)
@@ -214,12 +215,22 @@ Partial Class MainPage
         Me.PictureBox1.TabIndex = 8
         Me.PictureBox1.TabStop = False
         '
+        'LblRoleName
+        '
+        Me.LblRoleName.AutoSize = True
+        Me.LblRoleName.Font = New System.Drawing.Font("MS Reference Sans Serif", 28.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblRoleName.Location = New System.Drawing.Point(421, 5)
+        Me.LblRoleName.Name = "LblRoleName"
+        Me.LblRoleName.Size = New System.Drawing.Size(0, 60)
+        Me.LblRoleName.TabIndex = 18
+        '
         'MainPage
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.BackColor = System.Drawing.SystemColors.Window
         Me.ClientSize = New System.Drawing.Size(1093, 652)
+        Me.Controls.Add(Me.LblRoleName)
         Me.Controls.Add(Me.WebBrowser1)
         Me.Controls.Add(Me.PB_ChangeUser)
         Me.Controls.Add(Me.Btn_Incident)
@@ -260,4 +271,5 @@ Partial Class MainPage
     Friend WithEvents Btn_Incident As Button
     Friend WithEvents PB_ChangeUser As PictureBox
     Friend WithEvents WebBrowser1 As WebBrowser
+    Friend WithEvents LblRoleName As Label
 End Class

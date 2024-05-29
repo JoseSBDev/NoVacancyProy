@@ -103,7 +103,7 @@ Public Class MainPage
         End If
         'Desde aquí se controlan todos los accesos de los roles
         role = LoginPage.role
-        LblWelcome.Text = LblWelcome.Text & role
+        LblRoleName.Text = role
         Select Case role
             Case "Administrador"
                 Btn_Cleaning.Enabled = True
@@ -135,7 +135,7 @@ Public Class MainPage
             Case "Limpieza"
                 Btn_Cleaning.Enabled = True
                 Btn_Config.Enabled = False
-                Btn_Incident.Enabled = True
+                Btn_Incident.Enabled = False
                 Btn_Reservations.Enabled = False
                 Btn_Maintenance.Enabled = False
                 Btn_Inventory.Enabled = False
@@ -144,7 +144,7 @@ Public Class MainPage
             Case "Mantenimiento"
                 Btn_Cleaning.Enabled = False
                 Btn_Config.Enabled = False
-                Btn_Incident.Enabled = True
+                Btn_Incident.Enabled = False
                 Btn_Reservations.Enabled = False
                 Btn_Maintenance.Enabled = True
                 Btn_Inventory.Enabled = False

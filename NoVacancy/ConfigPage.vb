@@ -16,7 +16,7 @@ Public Class ConfigPage
 
 #Region "onLoad region"
     Private Sub ConfigPage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        FillComboBox()
+        FillListBox()
         LoadMonthlyRevenueChart()
     End Sub
 #End Region
@@ -128,7 +128,8 @@ Public Class ConfigPage
     End Sub
 
     'Rellena el combobox
-    Private Sub FillComboBox()
+    Private Sub FillListBox()
+        ListBox_Users.Items.Clear()
         Try
             Using connection As New MySqlConnection(connectionString)
                 connection.Open()
@@ -240,7 +241,7 @@ Public Class ConfigPage
                 End Try
             End Using
         End Using
-        FillComboBox()
+        FillListBox()
     End Sub
 
     'Botón que actualiza los datos introducidos para el usuario seleccioando
@@ -277,6 +278,8 @@ Public Class ConfigPage
 
         Btn_EditUser.Enabled = False
         Btn_NewUser.Enabled = True
+
+        FillListBox()
     End Sub
 #End Region
 End Class
